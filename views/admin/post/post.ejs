@@ -1,0 +1,37 @@
+<style>
+    .note-toolbar.panel-heading {
+        background-color: azure;
+    }
+</style>
+<form action="#" method="post">
+    <div class="row form-group">
+        <div class="col-lg-4 text-dark"><label for="post_title">Tiêu Đề</label></div>
+        <div class="col-lg-8">
+            <input required placeholder="nhập tiếu đề..." class="form-control" type="text" name="post_title"
+                id="post_title">
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-lg-4 text-dark">
+            <label for="post_discription">Tóm tắt nội dung</label>
+        </div>
+        <div class="col-lg-8">
+            <textarea required placeholder="nhập tóm tắt nội dung..." class="form-control" type=""
+                name="post_discription" id="post_discription"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="text-dark">
+            <label for="post_content">Nội dung bài viết</label>
+        </div>
+        <div>
+            <textarea required class="form-control" type="" name="post_content" id="post_content"></textarea>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Lưu Bài Viết</button>
+        <a name="" id="" class="btn btn-danger" href="/admin/post" role="button">Hủy Bài Viết</a>
+    </div>
+</form>
