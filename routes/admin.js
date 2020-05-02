@@ -56,16 +56,16 @@ router.get('/post', async (req, res) => {
 })
 
 router.get('/post/new', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost")  });
 })
 
 router.post('/post/new', async (req, res) => {
     console.log(req.body);
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"),});
 })
 
 router.get('/post/edit/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost") });
 })
 router.post('/post/edit/:id', async (req, res) => {
     res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
@@ -83,7 +83,12 @@ router.get('/logout', async (req, res) => {
     res.redirect('/login');
 })
 
+router.get('/profile',async (req, res) =>{
+    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
+})
+
 router.use((req, res) => {
     res.render('admin/404', { layout: 'layouts/_layout' });
 });
+
 module.exports = router;

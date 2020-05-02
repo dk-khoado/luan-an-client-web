@@ -1,0 +1,29 @@
+.profile{
+    margin:auto;
+    box-shadow: 0px 12px 20px 0px #cccccceb;
+}
+
+.profile img{
+    border-radius:100%;
+    border:2px solid lightgray;
+    width:60%;
+}
+
+.profile .card-body{
+    text-align:center;
+}
+
+/* Custom padding  */
+.custom-mt-1{
+    margin-top: 5px;
+}
+
+/* Custom file upload */
+.upload-btn-wrapper{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+.upload-btn-wrapper input[type=file] {
+    position: absolute;
+  }

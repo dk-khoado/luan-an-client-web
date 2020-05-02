@@ -7,9 +7,9 @@
     <title>Blank Page - Brand</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontsGG.css">
-    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/summernote/summernote.min.css">
-    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css" />
 
     <% if (typeof(style) !== 'undefined') { %>
     <% style.forEach(element => { %>
@@ -183,7 +183,8 @@
                                             <%= data %>
                                             <% } %> </h3>
                                         </span>
-                                        <img height="25px" class="border rounded-circle " src="/assets/img/avatars/avatar1.jpeg">
+                                        <img height="25px" class="border rounded-circle "
+                                            src="/assets/img/avatars/avatar1.jpeg">
                                     </div>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                         <a class="dropdown-item" role="presentation" href="#"><i
@@ -222,7 +223,7 @@
     <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
     <script src="/summernote/summernote.min.js"></script>
     <script src="/assets/js/theme.js"></script>
-
+    <script rel="stylesheet" href="/public/assets/fontawesome/js/all.min.js"> </script>
     <% if (typeof(script) !== 'undefined') { %>
     <% script.forEach(element => { %>
     <script src="<%- element %>"></script>
