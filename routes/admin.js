@@ -87,6 +87,8 @@ router.get('/profile',async (req, res) =>{
     res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
 })
 
+//[end]
+//làm ơn đừng xóa cái //[end]
 router.use((req, res) => {
     res.render('admin/404', { layout: 'layouts/_layout' });
 });
