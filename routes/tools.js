@@ -45,12 +45,12 @@ router.get("/", async (req, res) => {
         fs.readFile(`./templates/app_config.txt`, (err, dataTemplate) => {
             if (err) res.locals.err = err;
 
-            fs.writeFile(`./app_config/${actionName}Script.js`, dataTemplate, function (err, file) {
+            fs.writeFile(`./app_config/${controller}${actionName}Script.js`, dataTemplate, function (err, file) {
                 if (err) res.locals.err = err;
                 console.log('script config created!');
             });
 
-            fs.writeFile(`./app_config/${actionName}Style.js`, dataTemplate, function (err, file) {
+            fs.writeFile(`./app_config/${controller}${actionName}Style.js`, dataTemplate, function (err, file) {
                 if (err) res.locals.err = err;
                 console.log('style config created!');
             });

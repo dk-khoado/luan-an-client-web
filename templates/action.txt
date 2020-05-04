@@ -1,4 +1,4 @@
 router.get('/action_name',async (req, res) =>{
-    res.render('controller_name/action_name/index.ejs', { layout: 'layouts/_layout', script: require("../app_config/action_nameScript"),style: require("../app_config/action_nameStyle")  });
+    res.render('controller_name/action_name/index.ejs', { layout: 'layouts/_layout', script: require("../app_config/controller_nameaction_nameScript"),style: require("../app_config/controller_nameaction_nameStyle")  });
 })
 //[end]
