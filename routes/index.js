@@ -92,4 +92,8 @@ router.post('/login', async function (req, res) {
 router.get('/team', function(req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
+
+router.get('/profile', function(req, res, next) {
+  res.render('home/profile', { title: 'Profile User' });
+});
 module.exports = router;
