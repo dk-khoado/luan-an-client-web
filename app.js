@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
 app.set('layout', "layouts/layoutHome");
-// app.set("layout extractScripts", true)
+app.set("layout extractScripts", true)
 
 app.use(logger('dev'));
 app.use(express.json());

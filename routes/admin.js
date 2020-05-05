@@ -87,6 +87,10 @@ router.get('/profile',async (req, res) =>{
     res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
 })
 
+router.get('/profile/editFullname',async (req, res) =>{
+    res.locals.fullName = req.query.name;
+    res.render('admin/profile/_editFullname', {layout: 'layouts/_layoutNull'});
+});
 //[end]
 //làm ơn đừng xóa cái //[end]
 router.use((req, res) => {

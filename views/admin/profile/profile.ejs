@@ -11,9 +11,9 @@
                     <div class="image-upload">
                         <label for="file-input">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
-                        id="image"  style="cursor: pointer">
+                                id="image" style="cursor: pointer">
                         </label>
-        
+
                         <input id="file-input" type="file" />
                     </div>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -50,7 +50,7 @@
 
                         </div>
                         <div class="col-4 text-right">
-                            <a> <i class="fa fa-edit"></i></a>
+                            <button onclick="openModel()"> <i class="fa fa-edit"></i></button>
                         </div>
                     </div>
                     <div class="row">
@@ -162,3 +162,17 @@
             </div>
         </div>
     </div>
+
+    <div id="result">
+
+    </div>
+    <script>
+        function openModel() {
+            $.get("/admin/profile/editFullname?name=khoa", (data) => {
+                $("#result").html(data);
+
+                $("#editModel").show();
+            })
+        }
+
+    </script>
