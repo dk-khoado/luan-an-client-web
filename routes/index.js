@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var axios = require('axios').default;
 
+const connect = require('../helpers/APIHelper');
+const apis = require('../helpers/APIs');
+
+
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleStyleAccount = require('../app_config/styleAccount');
 var bundleScriptChat = require('../app_config/adminChat');
@@ -93,7 +97,10 @@ router.get('/team', function(req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
-router.get('/profile', function(req, res, next) {
+router.get('/profile',async function(req, res) {
+  let response = await connect(apis.POST_PROFILE,{},req.token);
+  res.locals = response.data_response[0];
+  console.log(data_response);
   res.render('home/profile', { title: 'Profile User' });
 });
 module.exports = router;
