@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="<%- element %>">
   <% }) %>
   <% } %>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/javascripts/peerjs.min.js"></script>
 </head>
 
 <body>
@@ -39,15 +43,15 @@
     <%- body %>
   </div>
 
-  <script src="/assets/js/jquery.min.js"></script>
-  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/javascripts/peerjs.min.js"></script>
-
   <% if (typeof(script) !== 'undefined') { %>
   <% script.forEach(element => { %>
   <script src="<%- element %>"></script>
   <% }) %>
   <% } %>
+  
+  <script>
+    $("#time-copyright").text(new Date().getFullYear());
+</script>
 </body>
 
 </html>

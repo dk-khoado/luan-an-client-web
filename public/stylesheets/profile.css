@@ -27,3 +27,11 @@
 .upload-btn-wrapper input[type=file] {
     position: absolute;
   }
+  
+.image-upload>input {
+    display: none;
+  }
+
+.p-custom-pf-0{
+    padding: 3px 6px;
+} 

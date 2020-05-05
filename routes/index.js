@@ -97,10 +97,10 @@ router.get('/team', function(req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
-router.get('/profile',async function(req, res) {
-  let response = await connect(apis.POST_PROFILE,{},req.token);
-  res.locals = response.data_response[0];
-  console.log(data_response);
+router.get('/profile',async (req, res) => {
+  let response = await connect(apis.POST_PROFILE,{}, req.token);
+  console.log(response.data_response);
+  res.locals = response.data_response;
   res.render('home/profile', { title: 'Profile User' });
-});
+})
 module.exports = router;

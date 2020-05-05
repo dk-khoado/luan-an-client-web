@@ -8,10 +8,14 @@
         <div class="col-4">
             <div class="card profile" style="width: 18rem;">
                 <div class="card-body">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
-                        id="image">
-                    <h5 class="card-title">Card title</h5>
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
+                                id="image" style="cursor: pointer">
+                        </label>
 
+                        <input id="file-input" type="file" />
+                    </div>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
                 </div>
@@ -41,12 +45,13 @@
 
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyễn Văn A</label>
+                                <label><%= fullName %> </label>
                             </div>
 
                         </div>
                         <div class="col-4 text-right">
-                            <a> <i class="fa fa-edit"></i></a>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-edit"></i></button>
                         </div>
                     </div>
                     <div class="row">
@@ -57,7 +62,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana</label>
+                                <label><%= username %></label>
                             </div>
                         </div>
 
@@ -70,7 +75,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana@gmail.com</label>
+                                <label><%= email %></label>
                             </div>
                         </div>
                     </div>
@@ -158,3 +163,17 @@
             </div>
         </div>
     </div>
+
+    <div id="result">
+
+    </div>
+    <script>
+        function openModel() {
+            $.get("/admin/profile/editFullname?name=khoa", (data) => {
+                $("#result").html(data);
+
+                $("#editModel").show();
+            })
+        }
+
+    </script>

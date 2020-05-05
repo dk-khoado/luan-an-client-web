@@ -84,9 +84,16 @@ router.get('/logout', async (req, res) => {
 })
 
 router.get('/profile',async (req, res) =>{
+    let response = await connect(apis.POST_PROFILE, {}, req.token);
+    res.locals= response.data_response[0];
     res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
 })
 
+router.post('/profile',async (req, res) =>{
+   let request = req.body;
+    
+    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
+})
 //[end]
 //làm ơn đừng xóa cái //[end]
 router.use((req, res) => {
