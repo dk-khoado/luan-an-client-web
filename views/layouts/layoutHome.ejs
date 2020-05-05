@@ -9,7 +9,7 @@
     <% } %>
   </title>
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
   <link rel="stylesheet" href="/assets/css/styles.min.css">
 
@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="<%- element %>">
   <% }) %>
   <% } %>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/javascripts/peerjs.min.js"></script>
 </head>
 
 <body>
@@ -38,10 +42,6 @@
   <div class="text-dark">
     <%- body %>
   </div>
-
-  <script src="/assets/js/jquery.min.js"></script>
-  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/javascripts/peerjs.min.js"></script>
 
   <% if (typeof(script) !== 'undefined') { %>
   <% script.forEach(element => { %>

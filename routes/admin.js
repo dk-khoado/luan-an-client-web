@@ -90,8 +90,8 @@ router.get('/profile',async (req, res) =>{
 })
 
 router.post('/profile',async (req, res) =>{
-    let response = await connect(apis.POST_PROFILE, {}, req.token);
-    res.locals= response.data_response[0];
+   let request = req.body;
+    
     res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
 })
 //[end]

@@ -163,34 +163,17 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit FullName</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="/profile" method="POST">
-                    <div class="form-group row">
-                        <label for="username" class="col-3 col-form-label">FullName:</label>
-                        <div class="col-9">
-                            <input type="text" class="form-control" id="fullname" name="fullname"> 
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
+    <div id="result">
 
     </div>
+    <script>
+        function openModel() {
+            $.get("/admin/profile/editFullname?name=khoa", (data) => {
+                $("#result").html(data);
 
-</div>
+                $("#editModel").show();
+            })
+        }
+
+    </script>

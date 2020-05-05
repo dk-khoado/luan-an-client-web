@@ -16,6 +16,16 @@
     <link rel="stylesheet" href="<%- element %>">
     <% }) %>
     <% } %>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/chart.min.js"></script>
+    <script src="/assets/js/bs-charts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+    <script src="/summernote/summernote.min.js"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script rel="stylesheet" href="/public/assets/fontawesome/js/all.min.js"> </script>
 </head>
 
 <body id="page-top">
@@ -217,15 +227,7 @@
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/chart.min.js"></script>
-    <script src="/assets/js/bs-charts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
-    <script src="/summernote/summernote.min.js"></script>
-    <script src="/assets/js/theme.js"></script>
-    <script rel="stylesheet" href="/assets/fontawesome/js/all.min.js"> </script>
+  
     <% if (typeof(script) !== 'undefined') { %>
     <% script.forEach(element => { %>
     <script src="<%- element %>"></script>
