@@ -11,9 +11,9 @@
                     <div class="image-upload">
                         <label for="file-input">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
-                        id="image"  style="cursor: pointer">
+                                id="image" style="cursor: pointer">
                         </label>
-        
+
                         <input id="file-input" type="file" />
                     </div>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -45,12 +45,13 @@
 
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyễn Văn A</label>
+                                <label><%= fullName %> </label>
                             </div>
 
                         </div>
                         <div class="col-4 text-right">
-                            <a> <i class="fa fa-edit"></i></a>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-edit"></i></button>
                         </div>
                     </div>
                     <div class="row">
@@ -61,7 +62,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana</label>
+                                <label><%= username %></label>
                             </div>
                         </div>
 
@@ -74,7 +75,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana@gmail.com</label>
+                                <label><%= email %></label>
                             </div>
                         </div>
                     </div>
@@ -162,3 +163,34 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit FullName</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile" method="POST">
+                    <div class="form-group row">
+                        <label for="username" class="col-3 col-form-label">FullName:</label>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="fullname" name="fullname"> 
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
