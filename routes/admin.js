@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
+const moment = require('moment');
 
 router.use(async (req, res, next) => {
 
@@ -87,6 +88,7 @@ router.get('/logout', async (req, res) => {
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
     res.locals= response.data_response[0];
+    res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
     res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
 })
 //Change fullName
@@ -116,7 +118,12 @@ router.post('/profile/editgender',async (req, res) =>{
 })
 //Change birthday
 router.get('/profile/editbirthday', async(req, res)=>{
+    res.locals.birthday = req.query.value;
     res.render('admin/profile/_editbirthday', {layout: 'layouts/_layoutNull'});
+})
+router.post('/profile/editbirthday', async(req, res)=>{
+    await connect(apis.POST_UPDATE_PROFILE, req.body, req.token);
+    res.redirect("/admin/profile");
 })
 
 
