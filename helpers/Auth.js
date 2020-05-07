@@ -1,5 +1,7 @@
-module.exports = async (req, res, next) => {
+const connect = require('../helpers/APIHelper');
+const apis = require('../helpers/APIs');
 
+module.exports = async (req, res, next) => {
     if (req.signedCookies.token) {
         req.token = req.signedCookies.token;
         //kiểm tra xem đa lưu thông tin người dùng chưa nếu chưa lưu thì gọi lấy

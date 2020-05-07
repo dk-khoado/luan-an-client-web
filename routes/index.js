@@ -4,11 +4,12 @@ var axios = require('axios').default;
 
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
-
+const signin = require('../helpers/Auth'); 
 
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleStyleAccount = require('../app_config/styleAccount');
 var bundleScriptChat = require('../app_config/adminChat');
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -37,7 +38,7 @@ router.get('/team', function (req, res, next) {
 router.get('/adminchat', function(req,res,next)
 {
   res.render('adminchat/index', {title: 'Chat của admin nha mấy ba ',
-script: bundleScriptChat})
+scripts: bundleScriptChat})
 })
 
 
@@ -97,10 +98,10 @@ router.get('/team', function(req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
-router.get('/profile',async (req, res) => {
+router.get('/profile',signin,async (req, res) => {
   let response = await connect(apis.POST_PROFILE,{}, req.token);
-  console.log(response.data_response);
-  res.locals = response.data_response;
-  res.render('home/profile', { title: 'Profile User' });
-})
+  res.locals = response.data_response[0];
+  res.render('home/profile',{title:'Profile User'});
+});
+
 module.exports = router;

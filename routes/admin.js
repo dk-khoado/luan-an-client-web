@@ -13,7 +13,7 @@ router.use(async (req, res, next) => {
 
             if (response == null) {
                 res.clearCookie("token")
-                res.send('<script>alert("token exprire");window.location.replace("/login")</script>');
+                res.send('<scripts>alert("token exprire");window.location.replace("/login")</scripts>');
                 return;
             }
 
@@ -23,7 +23,7 @@ router.use(async (req, res, next) => {
                 next();
             } else {
                 res.clearCookie("token")
-                res.send('<script>alert("token exprire");window.location.replace("/login")</script>');
+                res.send('<scripts>alert("token exprire");window.location.replace("/login")</scripts>');
             }
         } else {
             res.locals.data = req.signedCookies.v1_pf;
@@ -45,7 +45,7 @@ router.get('/messenger', async (req, res) => {
 //user manager
 router.get('/manager/users', async (req, res) => {
 
-    res.locals.script = require("../app_config/scriptManagerUser");
+    res.locals.scripts = require("../app_config/scriptsManagerUser");
     
     res.render('admin/manager/user/index', { layout: 'layouts/_layout' });
 })
@@ -56,26 +56,26 @@ router.get('/post', async (req, res) => {
 })
 
 router.get('/post/new', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost")  });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"), style: require("../app_config/styleadminPost")  });
 })
 
 router.post('/post/new', async (req, res) => {
     console.log(req.body);
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"),});
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"),});
 })
 
 router.get('/post/edit/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"), style: require("../app_config/styleadminPost") });
 })
 router.post('/post/edit/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 
 router.get('/post/delete/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 router.post('/post/delete/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 // <<<===
 router.get('/logout', async (req, res) => {
@@ -86,13 +86,13 @@ router.get('/logout', async (req, res) => {
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
     res.locals= response.data_response[0];
-    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
+    res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
 })
 
 router.post('/profile',async (req, res) =>{
    let request = req.body;
     
-    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
+    res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
 })
 //[end]
 //làm ơn đừng xóa cái //[end]
