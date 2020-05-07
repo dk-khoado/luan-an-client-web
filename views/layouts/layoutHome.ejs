@@ -43,11 +43,15 @@
     <%- body %>
   </div>
 
-  <% if (typeof(script) !== 'undefined') { %>
-  <% script.forEach(element => { %>
+  <% if (typeof(scripts) !== 'undefined') { %>
+  <% scripts.forEach(element => { %>
   <script src="<%- element %>"></script>
   <% }) %>
   <% } %>
+  
+  <script>
+    $("#time-copyright").text(new Date().getFullYear());
+</script>
 </body>
 
 </html>

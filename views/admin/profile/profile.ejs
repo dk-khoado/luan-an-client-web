@@ -45,12 +45,13 @@
 
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyễn Văn A</label>
+                                <label><%= fullName %> </label>
                             </div>
 
                         </div>
                         <div class="col-4 text-right">
-                            <button onclick="openModel()"> <i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-edit"></i></button>
                         </div>
                     </div>
                     <div class="row">
@@ -61,7 +62,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana</label>
+                                <label><%= username %></label>
                             </div>
                         </div>
 
@@ -74,7 +75,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>Nguyenvana@gmail.com</label>
+                                <label><%= email %></label>
                             </div>
                         </div>
                     </div>

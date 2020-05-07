@@ -1,5 +1,6 @@
 const connect = require('./APIHelper');
 const apis = require('./APIs');
+
 module.exports = async (req, res, next) => {
     if (req.signedCookies.token) {
         req.token = req.signedCookies.token;
