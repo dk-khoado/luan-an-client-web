@@ -1,0 +1,25 @@
+
+.row{
+    margin-top: 20px;
+}
+.scroll {
+    max-height: 100px;
+    overflow-y: visible;
+}
+.box {
+    border: 2px solid #538DD0;
+}
+
+.row-header {
+    background-color: #337AB7;
+    color: white;
+    font-size: 18px;
+}
+
+.custom-control{
+   margin-left: 20px;
+}
+.input-group{
+    margin-top: 10px;
+}
+

@@ -1,0 +1,146 @@
+<link rel="stylesheet" href="/stylesheets/freetoolmanagerapi.css">
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>api name</th>
+                                <th>number of row</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>user api</td>
+                                <td>10</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">view</button>
+                                    <button class="btn btn-primary btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>product api</td>
+                                <td>50</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">view</button>
+                                    <button class="btn btn-primary btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>order</td>
+                                <td>3</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm">view</button>
+                                    <button class="btn btn-primary btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 px-0" style="border: 1px solid rgb(143, 148, 153);">
+            <div class="row-header px-0">
+                <div class="row-text">
+                    <div class="col-12 text-left">
+                        <span class="label">Action of user api</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-right">
+                    <button class="btn btn-success w-75"><span>get all</span> </button>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
+                </div>
+                <div class="col-4 text-left">
+                    <button class="btn btn-success w-75"><span>get by id</span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 text-right">
+                    <button class="btn btn-danger w-75"><span>delete all</span> </button>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
+                </div>
+                <div class="col-4 text-left">
+                    <button class="btn btn-danger w-75 px-0" type="button"><span>delete by id</span></button>
+                </div>
+            </div>
+            <div class="row" style="padding: 50px;">
+                <div class="col-4 text-right">
+                    <span class="label">Result</span>
+                </div>
+                <div class="col-8 text-left">
+                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#basicExampleModal" style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;">Open with table</button>
+                    <!-- Button trigger modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Model</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Tittle</th>
+                                                <th>Director</th>
+                                                <th>Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>The Wizard of Oz</td>
+                                                <td>Victor Fleming</td>
+                                                <td>
+                                                    1939
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>The Third Man</td>
+                                                <td>Carol Reed</td>
+                                                <td>
+                                                    1949
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Citizen Kane</td>
+                                                <td>Orson Welles</td>
+                                                <td>
+                                                    1941
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
