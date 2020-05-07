@@ -15,7 +15,16 @@
                     <div class="form-group row">
                         <label class=" col-4 col-form-label">Birthday</label>
                         <div class="col-8">
-                            <input type="text" id="datepicker">
+
+                            <% if (typeof(birthday) === 'undefined') { %>
+
+                            <input type="text" id="datepicker" name="birthday" value="">
+
+                            <% } else { %>
+
+                            <input type="text" id="datepicker" name="birthday" value="<%= birthday %>">
+                            <% }  %>
+
                         </div>
                     </div>
                     <div class="modal-footer">

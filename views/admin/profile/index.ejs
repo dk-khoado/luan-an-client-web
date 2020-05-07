@@ -124,7 +124,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>30/04/2020</label>
+                                <label><%= birthday %> </label>
                             </div>
                         </div>
                         <div class="col-4 text-right">
@@ -193,6 +193,22 @@
 </div>
 
 <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#file-input").change(function () {
+        readURL(this);
+    });
+
     function openModalFullName() {
         $.get("/admin/profile/editFullname?name=<%- fullName %>", (data) => {
             $("#result").html(data);
@@ -211,7 +227,7 @@
         $.get("/admin/profile/editpassword?name=<%- password %>", (data) => {
             $("#result").html(data);
 
-            $("#editmodel").modal();    
+            $("#editmodel").modal();
 
             $('#closemodal').click(function () {
                 $('#editmodel').modal("hide");
@@ -234,7 +250,7 @@
         })
     }
     function openModalBirthday() {
-        $.get("/admin/profile/editbirthday?name=<%- fullName %>", (data) => {
+        $.get("/admin/profile/editbirthday?value=<%- birthday %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
