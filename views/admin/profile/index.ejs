@@ -50,8 +50,9 @@
 
                         </div>
                         <div class="col-4 text-right">
-                            <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
-                                <i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalFullName()">
+                                <i class="fa fa-edit"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -65,8 +66,8 @@
                                 <label><%= username %></label>
                             </div>
                         </div>
-
                     </div>
+
                     <div class="row">
                         <div class="col-2">
                             <div class="custom-mt-1">
@@ -79,6 +80,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-2">
                             <div class="custom-mt-1">
@@ -87,11 +89,31 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label>********</label>
+                                <label>**********</label>
                             </div>
                         </div>
                         <div class="col-4 text-right">
-                            <a> <i class="fa fa-edit"></i></a>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalPassword()">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="custom-mt-1">
+                                <label>Gender</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="custom-mt-1">
+                                <label> <%= gender %> </label>
+                            </div>
+                        </div>
+                        <div class="col-4 text-right">
+                            <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalGender()">
+                                <i class="fa fa-edit"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -106,7 +128,9 @@
                             </div>
                         </div>
                         <div class="col-4 text-right">
-                            <a> <i class="fa fa-edit"></i></a>
+                            <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalBirthday()">
+                                <i class="fa fa-edit"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -163,17 +187,63 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div id="result">
+<div id="result">
+</div>
 
-    </div>
-    <script>
-        function openModel() {
-            $.get("/admin/profile/editFullname?name=khoa", (data) => {
-                $("#result").html(data);
+<script>
+    function openModalFullName() {
+        $.get("/admin/profile/editFullname?name=<%- fullName %>", (data) => {
+            $("#result").html(data);
 
-                $("#editModel").show();
-            })
-        }
+            $("#editmodel").modal();
 
-    </script>
+            $('#closemodal').click(function () {
+                $('#editmodel').modal("hide");
+                $("#result").html();
+
+            });
+        })
+    }
+
+    function openModalPassword() {
+        $.get("/admin/profile/editpassword?name=<%- password %>", (data) => {
+            $("#result").html(data);
+
+            $("#editmodel").modal();    
+
+            $('#closemodal').click(function () {
+                $('#editmodel').modal("hide");
+                $("#result").html();
+
+            });
+        })
+    }
+    function openModalGender() {
+        $.get("/admin/profile/editgender?name=<%- gender %>", (data) => {
+            $("#result").html(data);
+
+            $("#editmodel").modal();
+
+            $('#closemodal').click(function () {
+                $('#editmodel').modal("hide");
+                $("#result").html();
+
+            });
+        })
+    }
+    function openModalBirthday() {
+        $.get("/admin/profile/editbirthday?name=<%- fullName %>", (data) => {
+            $("#result").html(data);
+
+            $("#editmodel").modal();
+
+            $('#closemodal').click(function () {
+                $('#editmodel').modal("hide");
+                $("#result").html();
+
+            });
+        })
+    }
+</script>

@@ -18,8 +18,8 @@ router.use(async (req, res, next) => {
             }
 
             if (response.is_success) {
-                res.locals.data = response.data_response[0].username;
-                res.cookie("v1_pf", response.data_response[0].username, { signed: true, maxAge: 12000 });
+                res.locals.data = response.data_response.username;
+                res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 12000 });
                 next();
             } else {
                 res.clearCookie("token")
@@ -56,26 +56,26 @@ router.get('/post', async (req, res) => {
 })
 
 router.get('/post/new', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost")  });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"), style: require("../app_config/styleadminPost")  });
 })
 
 router.post('/post/new', async (req, res) => {
     console.log(req.body);
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"),});
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"),});
 })
 
 router.get('/post/edit/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost"), style: require("../app_config/styleadminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"), style: require("../app_config/styleadminPost") });
 })
 router.post('/post/edit/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 
 router.get('/post/delete/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 router.post('/post/delete/:id', async (req, res) => {
-    res.render('admin/post/post', { layout: 'layouts/_layout', script: require("../app_config/adminPost") });
+    res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost") });
 })
 // <<<===
 router.get('/logout', async (req, res) => {
@@ -83,17 +83,46 @@ router.get('/logout', async (req, res) => {
     res.redirect('/login');
 })
 
+//Profile
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
     res.locals= response.data_response[0];
-    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
+    res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+})
+//Change fullName
+router.get('/profile/editfullName',async (req, res) =>{
+    res.locals.fullName = req.query.name;
+    res.render('admin/profile/_editfullName', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editfullName',async (req, res) =>{
+    await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change password
+router.get('/profile/editpassword',async (req, res) =>{
+    res.render('admin/profile/_editpassword', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editpassword',async (req, res) =>{
+    await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change gender
+router.get('/profile/editgender',async (req, res) =>{
+    res.render('admin/profile/_editgender', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editgender',async (req, res) =>{
+    await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change birthday
+router.get('/profile/editbirthday', async(req, res)=>{
+    res.render('admin/profile/_editbirthday', {layout: 'layouts/_layoutNull'});
 })
 
-router.post('/profile',async (req, res) =>{
-   let request = req.body;
-    
-    res.render('admin/profile/profile', { layout: 'layouts/_layout', script: require("../app_config/adminProfile") });
-})
+
+
+
+
 //[end]
 //làm ơn đừng xóa cái //[end]
 router.use((req, res) => {
