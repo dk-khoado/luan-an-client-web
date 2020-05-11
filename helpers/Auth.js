@@ -1,3 +1,4 @@
+
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
 
@@ -15,8 +16,8 @@ module.exports = async (req, res, next) => {
             }
 
             if (response.is_success) {
-                res.locals.data = response.data_response[0].username;
-                res.cookie("v1_pf", response.data_response[0].username, { signed: true, maxAge: 12000 });
+                res.locals.data = response.data_response.username;
+                res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 12000 });
                 next();
             } else {
                 res.clearCookie("token")

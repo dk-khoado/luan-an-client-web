@@ -18,8 +18,8 @@ router.use(async (req, res, next) => {
             }
 
             if (response.is_success) {
-                res.locals.data = response.data_response[0].username;
-                res.cookie("v1_pf", response.data_response[0].username, { signed: true, maxAge: 12000 });
+                res.locals.data = response.data_response.username;
+                res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 12000 });
                 next();
             } else {
                 res.clearCookie("token")
@@ -85,7 +85,7 @@ router.get('/logout', async (req, res) => {
 
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
-    res.locals= response.data_response[0];
+    res.locals= response.data_response;
     res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
 })
 
