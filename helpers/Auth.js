@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 const connect = require('./APIHelper');
 const apis = require('./APIs');
-=======
-
-const connect = require('../helpers/APIHelper');
-const apis = require('../helpers/APIs');
->>>>>>> remotes/origin/Tuan
 
 module.exports = async (req, res, next) => {
     if (req.signedCookies.token) {
@@ -21,13 +15,8 @@ module.exports = async (req, res, next) => {
             }
 
             if (response.is_success) {
-<<<<<<< HEAD
                 res.locals.data = response.data_response.fullname;
                 res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 50000 });
-=======
-                res.locals.data = response.data_response.username;
-                res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 12000 });
->>>>>>> remotes/origin/Tuan
                 next();
             } else {
                 res.clearCookie("token")
