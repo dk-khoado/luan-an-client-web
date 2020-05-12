@@ -4,7 +4,7 @@ var axios = require('axios').default;
 
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
-const signin = require('../helpers/Auth'); 
+const signin = require('../helpers/Auth');
 
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleStyleAccount = require('../app_config/styleAccount');
@@ -35,10 +35,11 @@ router.get('/team', function (req, res, next) {
   res.render('home/team', { title: 'My Team' });
 });
 
-router.get('/adminchat', function(req,res,next)
-{
-  res.render('adminchat/index', {title: 'Chat của admin nha mấy ba ',
-scripts: bundleScriptChat})
+router.get('/adminchat', function (req, res, next) {
+  res.render('adminchat/index', {
+    title: 'Chat của admin nha mấy ba ',
+    scripts: bundleScriptChat
+  })
 })
 
 
@@ -81,8 +82,9 @@ router.post('/login', async function (req, res) {
   })
     .then(function (respone) {
       if (respone.data.is_success == true) {
-        let data = respone.data;  
-        res.cookie('token', data.data_response.token, { signed: true, });
+        let data = respone.data;
+        res.cookie('token', data.data_response.token, { signed: true, expires: new Date(new Date().getDate + 3) });
+
         res.redirect('/admin');
       }
       else {
@@ -90,18 +92,18 @@ router.post('/login', async function (req, res) {
       }
     })
     .catch(function (error) {
-      console.log("[error]",error);      
+      console.log("[error]", error);
     });
 })
 /* GET home page. */
-router.get('/team', function(req, res, next) {
+router.get('/team', function (req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
-router.get('/profile',signin,async (req, res) => {
-  let response = await connect(apis.POST_PROFILE,{}, req.token);
-  res.locals = response.data_response[0];
-  res.render('home/profile',{title:'Profile User'});
+router.get('/profile', signin, async (req, res) => {
+  let response = await connect(apis.POST_PROFILE, {}, req.token);
+  res.locals = response.data_response;
+  res.render('home/profile', { title: 'Profile User' });
 });
 
 module.exports = router;
