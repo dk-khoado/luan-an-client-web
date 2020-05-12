@@ -87,9 +87,14 @@ router.get('/logout', async (req, res) => {
 //Profile
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
+<<<<<<< HEAD
     res.locals= response.data_response[0];
     res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
     res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+=======
+    res.locals= response.data_response;
+    res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+>>>>>>> remotes/origin/Tuan
 })
 //Change fullName
 router.get('/profile/editfullName',async (req, res) =>{
