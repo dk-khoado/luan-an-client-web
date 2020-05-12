@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
-=======
-const connect = require('./APIHelper');
-const apis = require('./APIs');
->>>>>>> remotes/origin/dev
 
 module.exports = async (req, res, next) => {
     if (req.signedCookies.token) {
