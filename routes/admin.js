@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
+const moment = require('moment');
 
 router.use(async (req, res, next) => {
 
@@ -13,7 +14,7 @@ router.use(async (req, res, next) => {
 
             if (response == null) {
                 res.clearCookie("token")
-                res.send('<scripts>alert("token exprire");window.location.replace("/login")</scripts>');
+                res.send('<script>alert("token exprire");window.location.replace("/login")</script>');
                 return;
             }
 
@@ -23,7 +24,7 @@ router.use(async (req, res, next) => {
                 next();
             } else {
                 res.clearCookie("token")
-                res.send('<scripts>alert("token exprire");window.location.replace("/login")</scripts>');
+                res.send('<script>alert("token exprire");window.location.replace("/login")</script>');
             }
         } else {
             res.locals.data = req.signedCookies.v1_pf;
@@ -45,7 +46,7 @@ router.get('/messenger', async (req, res) => {
 //user manager
 router.get('/manager/users', async (req, res) => {
 
-    res.locals.scripts = require("../app_config/scriptsManagerUser");
+    res.locals.script = require("../app_config/scriptManagerUser");
     
     res.render('admin/manager/user/index', { layout: 'layouts/_layout' });
 })
@@ -83,17 +84,57 @@ router.get('/logout', async (req, res) => {
     res.redirect('/login');
 })
 
+//Profile
 router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
+<<<<<<< HEAD
     res.locals= response.data_response;
     res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+=======
+    res.locals= response.data_response[0];
+    res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
+    res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+>>>>>>> remotes/origin/dev
+})
+//Change fullName
+router.get('/profile/editfullName',async (req, res) =>{
+    res.locals.fullName = req.query.name;
+    res.render('admin/profile/_editfullName', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editfullName',async (req, res) =>{
+    await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change password
+router.get('/profile/editpassword',async (req, res) =>{
+    res.render('admin/profile/_editpassword', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editpassword',async (req, res) =>{
+    await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change gender
+router.get('/profile/editgender',async (req, res) =>{
+    res.render('admin/profile/_editgender', { layout: 'layouts/_layoutNull' });
+})
+router.post('/profile/editgender',async (req, res) =>{
+    await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+   res.redirect("/admin/profile");
+})
+//Change birthday
+router.get('/profile/editbirthday', async(req, res)=>{
+    res.locals.birthday = req.query.value;
+    res.render('admin/profile/_editbirthday', {layout: 'layouts/_layoutNull'});
+})
+router.post('/profile/editbirthday', async(req, res)=>{
+    await connect(apis.POST_UPDATE_PROFILE, req.body, req.token);
+    res.redirect("/admin/profile");
 })
 
-router.post('/profile',async (req, res) =>{
-   let request = req.body;
-    
-    res.render('admin/profile/profile', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
-})
+
+
+
+
 //[end]
 //làm ơn đừng xóa cái //[end]
 router.use((req, res) => {
