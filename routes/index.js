@@ -13,7 +13,6 @@ var bundleScriptChat = require('../app_config/adminChat');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
   res.render('index', { title: 'Trang Chủ' });
 });
 
@@ -31,11 +30,12 @@ router.get('/register', function (req, res, next) {
   });
 });
 
-/* GET home page. */
-router.get('/team', function (req, res, next) {
-  res.render('home/team', { title: 'Express' });
-});
 
+router.get('/team', function (req, res, next) {
+  res.locals.base_url = apis.BASE_URL;
+  res.locals.endpoint = apis.GET_FIND_FRIEND;
+  res.render('home/team', { title: 'My Team' });
+});
 
 router.get('/adminchat', function (req, res, next) {
   res.render('adminchat/index', {
@@ -53,7 +53,7 @@ router.get('/forgotpassword', function (req, res, next) {
 });
 
 router.get('/success', function (req, res, next) {
-  res.render('success', { title: 'Success' });
+  res.render('success/loginsuccess',{title:'LoginSuccess User'});
 });
 
 router.post('/register', async function (req, res) {
@@ -83,7 +83,6 @@ router.post('/login', async function (req, res) {
     "email": req.body.username
   })
     .then(function (respone) {
-      console.log(respone.data);
       if (respone.data.is_success == true) {
         let data = respone.data;
         res.cookie('token', data.data_response.token, { signed: true, expires: new Date(new Date().getDate + 3) });
@@ -99,20 +98,11 @@ router.post('/login', async function (req, res) {
     });
 })
 
+
 router.get('/profile',signin,async (req, res) => {
   let response = await connect(apis.POST_PROFILE,{}, req.token);
   res.locals = response.data_response;
   res.render('home/profile',{ layout: 'layouts/layoutHome', scripts: require("../app_config/styleFreeProfile") });
 });
-router.get('/error',function(req,res,next){
-  res.render('error/errorpage',{title:'ErorrPage User'});
-});
 
-router.get('/successlogin',function(req,res,next){
-  res.render('success/loginsuccess',{title:'LoginSuccess User'});
-})
-
-router.get('/newsfeed',signin, async(req, res) =>{
-  res.render('newsfeed/index',{title: "News Feed"})
-});
 module.exports = router;
