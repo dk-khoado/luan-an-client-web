@@ -8,5 +8,5 @@ module.exports = {
     POST_LOGIN : "/api/account/login",
     POST_REGISTER :"/api/account/register",
     POST_UPDATE_PROFILE: "/api/account/updateProfile",
-    POST_CHANGE_PASSWORD: "/api/account/changepassword"
+    POST_CHANGE_PASSWORD: "/api/account/changepassword",
 }

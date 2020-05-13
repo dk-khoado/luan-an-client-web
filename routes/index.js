@@ -80,6 +80,7 @@ router.post('/login', async function (req, res) {
     "email": req.body.username
   })
     .then(function (respone) {
+      console.log(respone.data);
       if (respone.data.is_success == true) {
         let data = respone.data;  
         res.cookie('token', data.data_response.token, { signed: true, });
@@ -104,4 +105,7 @@ router.get('/profile',signin,async (req, res) => {
   res.render('home/profile',{title:'Profile User'});
 });
 
+router.get('/newsfeed',signin, async(req, res) =>{
+  res.render('newsfeed/index',{title: "News Feed"})
+});
 module.exports = router;
