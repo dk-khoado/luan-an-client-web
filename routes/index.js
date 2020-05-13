@@ -5,6 +5,8 @@ var axios = require('axios').default;
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
 const signin = require('../helpers/Auth'); 
+const moment = require('moment');
+
 
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleStyleAccount = require('../app_config/styleAccount');
@@ -101,14 +103,46 @@ router.get('/team', function(req, res, next) {
 router.get('/profile',signin,async (req, res) => {
   let response = await connect(apis.POST_PROFILE,{}, req.token);
   res.locals = response.data_response;
-  res.render('home/profile',{ layout: 'layouts/layoutHome', scripts: require("../app_config/styleFreeProfile") });
+  res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
+  res.render('home/profile/index',{ layout: 'layouts/layoutHome' });
 });
+
+router.get('/profile/editfullName',async (req, res) =>{
+  res.locals.fullName = req.query.name;
+  res.render('home/profile/_editfullName', { layout: 'layouts/_layoutNull' });
+});
+
+router.post('/profile/editfullName',signin,async(req,res)=>{
+  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+  res.redirect("/profile");
+});
+
+router.get('/profile/editgender',async (req,res) =>{
+  res.render('home/profile/_editgender',{ layout: 'layouts/_layoutNull'});
+});
+
+router.post('/profile/editgender',signin,async(req,res)=>{
+  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+  res.redirect("/profile");
+});
+
+router.get('/profile/editbirthday', async (req,res)=>{
+  res.locals.birthday = req.query.name;
+  res.render('home/profile/_editbirthday',{ layout : 'layouts/_layoutNull'});
+})
+
+router.post('/profile/editbirthday',signin,async(req,res) =>{
+  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
+  res.redirect("/profile");
+});
+
 router.get('/error',function(req,res,next){
   res.render('error/errorpage',{title:'ErorrPage User'});
 });
 
 router.get('/successlogin',function(req,res,next){
   res.render('success/loginsuccess',{title:'LoginSuccess User'});
-})
+});
+
 
 module.exports = router;

@@ -19,7 +19,8 @@
                         <label><%= fullName %> </label>
                     </div>
                     <div class="col-lg-2 text-left">
-                        <i class="fas fa-edit"></i>
+                        <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalFullName()">
+                            <i class="fa fa-edit"></i></button>
                     </div>
                 </div>
                 <div class="row">
@@ -72,7 +73,8 @@
                                 <label><%= birthday %> </label>
                             </div>
                             <div class="col-lg-4 text-right">
-                                <i class="fas fa-edit"></i>
+                                <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalbirthday()">
+                                    <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
@@ -83,7 +85,8 @@
                                 <label><%= gender %> </label>
                             </div>
                             <div class="col-lg-4 text-right">
-                                <i class="fas fa-edit"></i>
+                                <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalgender()">
+                                    <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                     </div>
@@ -93,3 +96,42 @@
         </div>
     </div>
 </div>
+<div id="result">
+</div>
+
+<script>
+    function openModalFullName() {
+        $.get("/profile/editfullName?name=<%- fullName %>", (data) => {
+            $("#result").html(data);
+
+            $("#editmodel").modal();
+
+            $('#closemodal').click(function () {
+                $('#editmodel').modal("hide");
+                $("#result").html();
+            });
+        });
+    }
+    function openModalgender(){
+        $.get("/profile/editgender?name=<%- gender %>",(data)=>{
+            $("#result").html(data);
+
+            $("#editmodel").modal();
+            $('#closemodal').click(function(){
+                $('#editmodel').modal("hide");
+                $("#result").html();
+            });
+        })
+    }
+    function openModalbirthday(){
+        $.get("/profile/editbirthday?name=<%- birthday %>",(data)=>{
+            $("#result").html(data);
+
+            $("#editmodel").modal();
+            $('#closemodal').click(function(){
+                $('#editmodel').modal("hide");
+                $("#result").html();
+            });
+        });
+    }
+</script>
