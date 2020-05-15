@@ -5,6 +5,7 @@ const apis = require('../helpers/APIs');
 const moment = require('moment');
 const Auth = require('../helpers/Auth');
 
+router.use(Auth);
 router.get('/', async (req, res) => {
     res.render('admin/index', { title: "admin", layout: 'layouts/_layout' });
 });
@@ -54,7 +55,7 @@ router.get('/logout', async (req, res) => {
 })
 
 //Profile
-router.get('/profile',Auth,async (req, res) =>{
+router.get('/profile',async (req, res) =>{
     let response = await connect(apis.POST_PROFILE, {}, req.token);
     res.locals= response.data_response;
     if (res.locals.birthday)
@@ -69,7 +70,7 @@ router.get('/profile/editfullName',async (req, res) =>{
     res.locals.fullName = req.query.name;
     res.render('admin/profile/_editfullName', { layout: 'layouts/_layoutNull' });
 })
-router.post('/profile/editfullName',Auth,async (req, res) =>{
+router.post('/profile/editfullName',async (req, res) =>{
     await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
    res.redirect("/admin/profile");
 })
@@ -77,7 +78,7 @@ router.post('/profile/editfullName',Auth,async (req, res) =>{
 router.get('/profile/editpassword',async (req, res) =>{
     res.render('admin/profile/_editpassword', { layout: 'layouts/_layoutNull' });
 })
-router.post('/profile/editpassword',Auth,async (req, res) =>{
+router.post('/profile/editpassword',async (req, res) =>{
     await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
    res.redirect("/admin/profile");
 })
@@ -85,7 +86,7 @@ router.post('/profile/editpassword',Auth,async (req, res) =>{
 router.get('/profile/editgender',async (req, res) =>{
     res.render('admin/profile/_editgender', { layout: 'layouts/_layoutNull' });
 })
-router.post('/profile/editgender',Auth,async (req, res) =>{
+router.post('/profile/editgender',async (req, res) =>{
     await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
    res.redirect("/admin/profile");
 })
@@ -94,7 +95,7 @@ router.get('/profile/editbirthday', async(req, res)=>{
     res.locals.birthday = req.query.value;
     res.render('admin/profile/_editbirthday', {layout: 'layouts/_layoutNull'});
 })
-router.post('/profile/editbirthday',Auth, async(req, res)=>{
+router.post('/profile/editbirthday', async(req, res)=>{
     await connect(apis.POST_UPDATE_PROFILE, req.body, req.token);
     res.redirect("/admin/profile");
 })
