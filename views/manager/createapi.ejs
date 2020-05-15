@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row justify-content-between">
         <div class="col-lg-6">
+            <form method="post" name="datafield[0]:id" onsubmit="return false">
             <div class="row">
                 <div class="col-lg-6 text-left">
                     <input class="api" placeholder="Api_name" style="border: none;">
@@ -50,6 +51,7 @@
                     </div>
                 </div>
             </div>
+        </form>
         </div>
         <div class="col-lg-4 px-0 " style="border: 1px solid #538DD0;height: 400px;">
             <div class="row-header">
@@ -70,6 +72,7 @@
 </div>
 <script>
     $(document).ready(function(){
+        let id = 0;
     $( ".btn.btn-success " ).click(function(){
        $(".text").append("<div class='row'>" +
         "<div class='col-lg-6 text-left'><input class='form-control' placeholder=Username aria-label=Username aria-describedby=basic-addon1></div>" +

@@ -18,7 +18,7 @@ router.get('/createapi', function(req, res, next) {
 
 
 router.get('/managerapi',function (req, res,next){
-    res.render('manager/managerapi.ejs',{title: 'ToolManagerApi User'});
+    res.render('manager/managerapi.ejs',{title: 'ToolManagerApi'});
 });
 
 router.get

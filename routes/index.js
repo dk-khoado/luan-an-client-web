@@ -11,7 +11,7 @@ const moment = require('moment');
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleStyleAccount = require('../app_config/styleAccount');
 var bundleScriptChat = require('../app_config/adminChat');
-
+var bundleStyleReset = require('../app_config/styleReset');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -100,6 +100,10 @@ router.get('/team', function(req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
+router.get('/reset',function(req,res,next){
+  res.render('home/resetnewpassword',{style:bundleStyleReset});
+});
+
 router.get('/profile',signin,async (req, res) => {
   let response = await connect(apis.POST_PROFILE,{}, req.token);
   res.locals = response.data_response;
@@ -116,6 +120,15 @@ router.post('/profile/editfullName',signin,async(req,res)=>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
   res.redirect("/profile");
 });
+
+router.get('/profile/editpassword',async (req,res)=>{
+  res.render('home/profile/_editpassword',{ layout: 'layouts/_layoutNull'});
+});
+
+router.post('/profile/editpassword',signin,async(req,res)=>{
+  await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
+  res.redirect("/profile");
+})
 
 router.get('/profile/editgender',async (req,res) =>{
   res.render('home/profile/_editgender',{ layout: 'layouts/_layoutNull'});
@@ -143,6 +156,5 @@ router.get('/error',function(req,res,next){
 router.get('/successlogin',function(req,res,next){
   res.render('success/loginsuccess',{title:'LoginSuccess User'});
 });
-
 
 module.exports = router;

@@ -67,6 +67,18 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-2">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>*********</label>
+                            </div>
+                            <div class="col-lg-4 text-right">
+                                <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalpassword()">
+                                    <i class="fa fa-edit"></i></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
                                 <label>Ngaysinh</label>
                             </div>
                             <div class="col-lg-6">
@@ -122,6 +134,17 @@
                 $("#result").html();
             });
         })
+    }
+    function openModalpassword(){
+        $.get("/profile/editpassword?name=<%- password %>",(data)=>{
+            $('#result').html(data);
+
+            $("#editmodel").modal();
+            $('#closemodal').click(function(){
+                $('#editmodel').modal("hide");
+                $("#result").html();
+            });
+        });
     }
     function openModalbirthday(){
         $.get("/profile/editbirthday?name=<%- birthday %>",(data)=>{
