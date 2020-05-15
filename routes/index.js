@@ -66,7 +66,7 @@ router.post('/register', async function (req, res) {
         res.redirect('/account');
       }
       else {
-        res.redirect('/success');
+        res.redirect('/successlogin');
       }
 
     })

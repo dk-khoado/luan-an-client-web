@@ -4,7 +4,7 @@
         <div class="col-7">
             <div class="row">
                 <div class="col-12">
-                    <button class="btn btn-primary">Create</button>
+                    <a href="/manager/createapi" role="button" class="btn btn-primary">Create</a>
                 </div>
             </div>
             <div class="row">
@@ -24,7 +24,7 @@
                                 <td>
                                     <button class="btn btn-success btn-sm">view</button>
                                     <button class="btn btn-primary btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#delete">Delete</button>
                                 </td>
                             </tr>
                             <tr>
@@ -33,7 +33,7 @@
                                 <td>
                                     <button class="btn btn-success btn-sm">view</button>
                                     <button class="btn btn-primary btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#delete">Delete</button>
                                 </td>
                             </tr>
                             <tr>
@@ -42,7 +42,7 @@
                                 <td>
                                     <button class="btn btn-success btn-sm">view</button>
                                     <button class="btn btn-primary btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#delete">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -60,24 +60,24 @@
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-success w-75"><span>get all</span> </button>
+                    <button class="btn btn-success w-75" id="result"><span>get all</span> </button>
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-success w-75"><span>get by id</span></button>
+                    <button class="btn btn-success w-75" id="result2"><span>get by id</span></button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-danger w-75"><span>delete all</span> </button>
+                    <button class="btn btn-danger w-75" id="result3"><span>delete all</span> </button>
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-danger w-75 px-0" type="button"><span>delete by id</span></button>
+                    <button class="btn btn-danger w-75 px-0" id="result4"><span>delete by id</span></button>
                 </div>
             </div>
             <div class="row" style="padding: 50px;">
@@ -85,7 +85,7 @@
                     <span class="label">Result</span>
                 </div>
                 <div class="col-8 text-left">
-                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#basicExampleModal" style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;">Open with table</button>
+                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#basicExampleModal" style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;display: none;" id="title">Open with table</button>
                     <!-- Button trigger modal -->
                     <!-- Modal -->
                     <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
@@ -140,7 +140,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Model</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           <span>Bạn có muốn xóa</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $('#result').click(function() {
+    $('#title').show();
+});
+    $('#result2').click(function(){
+        $('#title').show();
+    });
+    $('#result3').click(function(){
+        $('#title').show();
+    })
+    $('#result4').click(function(){
+        $('#title').show();
+    })
+</script>

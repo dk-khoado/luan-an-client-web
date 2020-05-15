@@ -2,7 +2,7 @@
   body{
     width: 100%;
     height: auto;
-    background: -webkit-linear-gradient(0deg, #3c96ff 0%, #2dfbff 100%);
+    background-color: gray;
     font-family: "Robato",sans-serif;
     font-size: 17px;
   }
@@ -30,11 +30,7 @@
       font-size: 16px;
   }
   #logreg-forms .form-control:focus { z-index: 2; }
-  #logreg-forms .form-signin input[type="email"] {
-      margin-bottom: -1px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-  }
+  
   #logreg-forms .form-signin input[type="password"] {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -43,5 +39,6 @@
     background: -webkit-linear-gradient(0deg,  #2dfbff 0%, #3c96ff 100%);
     border-radius: 25px;
     padding-top: 20px;
+    font-size: 20px;
     color: #fff;
   }
