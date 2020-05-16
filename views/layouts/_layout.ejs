@@ -30,7 +30,7 @@
     <script src="/assets/fontawesome/js/all.min.js"> </script>
     <script src="/assets/jquery-ui-1.12.1/jquery-ui.min.js">
 
-        
+
     </script>
 </head>
 
@@ -217,7 +217,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </div>                    
                 </nav>
                 <!-- phần body của web nha mấy má -->
                 <div class="container-fluid">
@@ -225,15 +225,16 @@
                 </div>
                 <footer class="bg-white sticky-footer">
                     <div class="container my-auto">
-                        <div class="text-center my-auto copyright"><span>Copyright © EZCode <span id="time-copyright"></span>
+                        <div class="text-center my-auto copyright"><span>Copyright © EZCode <span
+                                    id="time-copyright"></span>
                         </div>
-                        
+
                     </div>
                 </footer>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-  
+
     <% if (typeof(scripts) !== 'undefined') { %>
     <% scripts.forEach(element => { %>
     <script src="<%- element %>"></script>
@@ -244,7 +245,7 @@
         $("#time-copyright").text(new Date().getFullYear());
     </script>
 
-<%- script %>
+    <%- script %>
 </body>
 
 </html>

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
+var tempdata = require('tempdata');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -33,6 +34,25 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
+app.use(tempdata);
+
+//message system
+// app.use((req, res, next) => {
+//   res.message = {
+//     error: function (message = null) {      
+//       res.locals.msgError = message;
+//     },
+//     warning: function (message = null) {
+//       res.locals.msgWarning = message;
+//     },
+//     success: function (message = null) {
+//       res.locals.msgSuccess = message;
+//     },
+//     info: function (message = null) {
+//       res.locals.msgInfo = message;
+//     }
+//   }
+// });
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
