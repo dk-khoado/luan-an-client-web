@@ -17,7 +17,7 @@ router.get('/createapi', Auth, function (req, res, next) {
   });
 });
 
-router.get('/managerapi', Auth, function (req, res, next) {
+router.get('/api', Auth, function (req, res, next) {
 
   res.render('manager/managerapi', { title: 'Manager API' });
 });
