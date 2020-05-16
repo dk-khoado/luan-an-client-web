@@ -8,7 +8,7 @@
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
                         id="image" style="cursor: pointer;"></label>
 
-                <input type="file" id="file-upload" />
+                <input type="file" id="file-upload" class="files" />
             </div>
             <div class="title">
                 <div class="row">
@@ -39,64 +39,64 @@
             <div class="col-lg-8">
                 <div class="card" style="width: 35rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Thoong tin ca nhan</h5>
+                        <h5 class="card-title">Thông tin cá nhân</h5>
                         <div class="row">
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label>
-                                    Username
+                                    Tài khoản
                                 </label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= username %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label>Email</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= email %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <i class="fas fa-edit"></i>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Password</label>
+                            <div class="col-lg-3">
+                                <label>Mật Khẩu</label>
                             </div>
                             <div class="col-lg-6">
                                 <label>*********</label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalpassword()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Ngaysinh</label>
+                            <div class="col-lg-3">
+                                <label>Ngày sinh</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= birthday %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalbirthday()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Gioi tinh</label>
+                            <div class="col-lg-3">
+                                <label>Giới tính</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= gender %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalgender()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
@@ -124,6 +124,23 @@
             });
         });
     }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image').attr('src', e.target.result);
+                console.log(e.target.result);
+                console.log(e.target.split('')[1]);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#file-upload").change(function () {
+        readURL(this);
+    });
+
     function openModalgender(){
         $.get("/profile/editgender?name=<%- gender %>",(data)=>{
             $("#result").html(data);

@@ -15,9 +15,21 @@ router.get('/createapi', function(req, res, next) {
 });
 
 router.get('/managerapi',function (req, res,next){
-    res.render('manager/managerapi.ejs',{title: 'ToolManagerApi'});
+    res.render('manager/managerapi',{title: 'ToolManagerApi'});
 });
 
-
+router.post('/managerapi',async function(req,res){
+  await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID',{
+    "table_name":req.body.table_name
+  })
+  .then(function(respone){
+    if(respone.data.is_success == true){
+      
+    }
+  })
+  .catch(function (error) {
+    console.log("[error]",error);      
+  });
+})
 //[end]
 module.exports = router;
