@@ -37,7 +37,7 @@ function removeField(index) {
 }
 
 function validateMatch(id) {
-    
+
     var rowField = $('#name' + id).val();
     if (rowField == "") {
         return;
@@ -55,28 +55,25 @@ function validateMatch(id) {
                 $('#error' + id).addClass('d-none');
                 $('#rowField').removeClass('mt-3');
             }
-           
+
         }
-    
+
     }
 }
 
 function createAPI() {
     // console.log($("#create")).serilizeArray();
     var validateAPIName = /^[A-Za-z0-9_]+$/.test($('#table_name').val());
-    if (validateAPIName == false)
-    {
+    if (validateAPIName == false) {
         alert("Tên API không được để trống");
         return;
     }
-    if (listField.length < 1)
-    {
+    if (listField.length < 1) {
         alert("Vui lòng tạo Field");
         return;
     }
-    if (isError)
-    {
-        alert ("Các Field không được trùng");
+    if (isError) {
+        alert("Các Field không được trùng");
     }
     var data = {
         table_name: $('#table_name').val(),
@@ -104,9 +101,9 @@ function createAPI() {
         headers:
             { Authorization: "Bearer " + token }
     };
-    axios.post(BASE_URL + POST_CREATE_API, data, options)
+    axios.post(BASE_URL + POST_UPLOAD_IMAGE, data, options)
         .then(function (response) {
-           
+            console.log(response);
         })
         .catch(function (error) {
             console.log(error);

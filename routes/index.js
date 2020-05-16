@@ -104,57 +104,18 @@ router.get('/reset',function(req,res,next){
   res.render('home/resetnewpassword',{style:bundleStyleReset});
 });
 
-router.get('/profile',signin,async (req, res) => {
-  let response = await connect(apis.POST_PROFILE,{}, req.token);
-  res.locals = response.data_response;
-  res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
-  res.render('home/profile/index',{ layout: 'layouts/layoutHome' });
-});
 
-router.get('/profile/editfullName',async (req, res) =>{
-  res.locals.fullName = req.query.name;
-  res.render('home/profile/_editfullName', { layout: 'layouts/_layoutNull' });
-});
-
-router.post('/profile/editfullName',signin,async(req,res)=>{
-  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
-});
-
-router.get('/profile/editpassword',async (req,res)=>{
-  res.render('home/profile/_editpassword',{ layout: 'layouts/_layoutNull'});
-});
-
-router.post('/profile/editpassword',signin,async(req,res)=>{
-  await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
-  res.redirect("/profile");
-})
-
-router.get('/profile/editgender',async (req,res) =>{
-  res.render('home/profile/_editgender',{ layout: 'layouts/_layoutNull'});
-});
-
-router.post('/profile/editgender',signin,async(req,res)=>{
-  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
-});
-
-router.get('/profile/editbirthday', async (req,res)=>{
-  res.locals.birthday = req.query.name;
-  res.render('home/profile/_editbirthday',{ layout : 'layouts/_layoutNull'});
-})
-
-router.post('/profile/editbirthday',signin,async(req,res) =>{
-  await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
-});
 
 router.get('/error',function(req,res,next){
-  res.render('error/errorpage',{title:'ErorrPage User'});
+  res.render('error/errorpage',{title:'ErorrPage'});
 });
 
 router.get('/successlogin',function(req,res,next){
-  res.render('success/loginsuccess',{title:'LoginSuccess User'});
+  res.render('success/loginsuccess',{title:'LoginSuccess'});
+});
+
+router.get('/newsfeed', function(req,res,next){
+  res.render('newsfeed/index',{title: "Bảng tin"});
 });
 
 module.exports = router;
