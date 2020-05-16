@@ -37,22 +37,27 @@ app.use(session({
 app.use(tempdata);
 
 //message system
-// app.use((req, res, next) => {
-//   res.message = {
-//     error: function (message = null) {      
-//       res.locals.msgError = message;
-//     },
-//     warning: function (message = null) {
-//       res.locals.msgWarning = message;
-//     },
-//     success: function (message = null) {
-//       res.locals.msgSuccess = message;
-//     },
-//     info: function (message = null) {
-//       res.locals.msgInfo = message;
-//     }
-//   }
-// });
+app.use((req, res, next) => {
+  res.message = {
+    error: function (message = null) {
+      req.tempData.set("error", message);
+      res.locals.msgError = message;
+    },
+    warning: function (message = null) {
+      req.tempData.set("warning", message);
+      res.locals.msgWarning = message;
+    },
+    success: function (message = null) {
+      req.tempData.set("success", message);
+      res.locals.msgSuccess = message;
+    },
+    info: function (message = null) {
+      req.tempData.set("info", message);
+      res.locals.msgInfo = message;
+    }
+  }
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
