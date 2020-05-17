@@ -10,11 +10,15 @@
                 <div class="card-body">
                     <div class="image-upload">
                         <label for="file-input">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
+                            <img src=""
                                 id="image" style="cursor: pointer">
                         </label>
 
                         <input id="file-input" type="file" />
+                        <div class="progress" >
+                            <div class="progress-bar" role="progressbar"id="progress" aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
@@ -193,22 +197,13 @@
 </div>
 
 <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    var BASE_URL = '<%- BASE_URL %>';
+    var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
+    var token = '<%- token %>';
 
-            reader.onload = function (e) {
-                $('#image').attr('src', e.target.result);
-            }
+    var imageAvatar = "<%- URL_IMAGE %>" + "<%- image %>";
 
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-        }
-    }
-
-    $("#file-input").change(function () {
-        readURL(this);
-    });
-
+    $("#image").attr("src", imageAvatar);
     function openModalFullName() {
         $.get("/admin/profile/editFullname?name=<%- fullName %>", (data) => {
             $("#result").html(data);
