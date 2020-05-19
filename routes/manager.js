@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const Auth = require('../helpers/Auth');
 const apis = require("../helpers/APIs");
+const connect = require('../helpers/APIHelper');
+
 
 var bundlestyleCreateAPI = require('../app_config/styleCreateAPI');
 var bundlescriptCreateAPI = require('../app_config/scriptCreateAPI');
@@ -34,6 +36,12 @@ router.post('/managerapi',async function(req,res){
   .catch(function (error) {
     console.log("[error]",error);      
   });
+});
+
+router.get('/detailapi',Auth,async(req,res)=>{
+  let response = await connect(apis.POST_API,{},req.token);
+  res.locals = response.data_response[0].endpoint_action;
+  res.render('manager/detailapi', {style:require('../app_config/detailapi'), layout:'layouts/layoutHome'});
 })
 //[end]
 module.exports = router;
