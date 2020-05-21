@@ -18,6 +18,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('trust proxy', 1)
 
 app.use(expressLayouts);
 app.set('layout', "layouts/layoutHome");
@@ -28,22 +29,49 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("adb123"));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret : "hello" }));
+app.use(session({
+  secret: "abc123",
+  resave: true,
+  saveUninitialized: false
+}));
 app.use(tempdata);
+
+//message system
+app.use((req, res, next) => {
+  res.message = {
+    error: function (message = null) {
+      req.tempData.set("error", message);
+      res.locals.msgError = message;
+    },
+    warning: function (message = null) {
+      req.tempData.set("warning", message);
+      res.locals.msgWarning = message;
+    },
+    success: function (message = null) {
+      req.tempData.set("success", message);
+      res.locals.msgSuccess = message;
+    },
+    info: function (message = null) {
+      req.tempData.set("info", message);
+      res.locals.msgInfo = message;
+    }
+  }
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
-app.use('/manager',managerRouter);
+app.use('/manager', managerRouter);
 
 app.use('/tools', require('./routes/tools'));
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

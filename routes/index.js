@@ -4,7 +4,7 @@ var axios = require('axios').default;
 
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
-const signin = require('../helpers/Auth'); 
+const signin = require('../helpers/Auth');
 const moment = require('moment');
 
 
@@ -37,14 +37,15 @@ router.get('/team', function (req, res, next) {
   res.render('home/team', { title: 'My Team' });
 });
 
-router.get('/adminchat', function(req,res,next)
-{
-  res.render('adminchat/index', {title: 'Chat của admin nha mấy ba ',
-scripts: bundleScriptChat})
+router.get('/adminchat', function (req, res, next) {
+  res.render('adminchat/index', {
+    title: 'Chat của admin nha mấy ba ',
+    scripts: bundleScriptChat
+  })
 })
 
 
-router.get('/forgotpassword', function (req, res, next) {
+router.get('/forgotpassword', function  (req, res,next){
   res.render('home/forgot-password', {
     title: 'Quên Mật Khẩu',
     style: bundleStyleAccount
@@ -54,6 +55,8 @@ router.get('/forgotpassword', function (req, res, next) {
 router.get('/success', function (req, res, next) {
   res.render('success', { title: 'Success' });
 });
+
+
 
 router.post('/register', async function (req, res) {
   await axios.post('https://api-server-game.herokuapp.com/api/account/register', {
@@ -83,8 +86,10 @@ router.post('/login', async function (req, res) {
   })
     .then(function (respone) {
       if (respone.data.is_success == true) {
-        let data = respone.data;  
-        res.cookie('token', data.data_response.token, { signed: true, });
+        let data = respone.data;
+
+        res.cookie('token', data.data_response.token, { signed: true, maxAge: 604800 });        
+        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 86400 });             
         res.redirect('/admin');
       }
       else {
@@ -92,19 +97,35 @@ router.post('/login', async function (req, res) {
       }
     })
     .catch(function (error) {
-      console.log("[error]",error);      
+      console.log("[error]", error);
+      res.redirect('/login');
     });
+});
+
+router.post('/forgotpassword',async (req,res)=>{
+  let respone = await connect(apis.POST_FORGOT,req.body,{});
+  if(respone.is_success == true){
+    res.redirect('/notify_fg');
+  }
+  else{
+    res.redirect('/forgotpassword');
+  }
 })
+
+
+
 /* GET home page. */
-router.get('/team', function(req, res, next) {
+router.get('/team', function (req, res, next) {
   res.render('home/team', { title: 'Express' });
 });
 
-router.get('/reset',function(req,res,next){
-  res.render('home/resetnewpassword',{style:bundleStyleReset});
+router.get('/notify_fg',async(req,res)=>{
+  res.render('home/notify_fg',{title: 'Notify', layout:'layouts/layoutHome'});
 });
 
-
+router.get('/newsfeed', async (req, res) => {
+  res.render('newsfeed/index', { title: "News Feed" })
+});
 
 router.get('/error',function(req,res,next){
   res.render('error/errorpage',{title:'ErorrPage'});
@@ -117,5 +138,7 @@ router.get('/successlogin',function(req,res,next){
 router.get('/newsfeed', function(req,res,next){
   res.render('newsfeed/index',{title: "Bảng tin"});
 });
+
+
 
 module.exports = router;

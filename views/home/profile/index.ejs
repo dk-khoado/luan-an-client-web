@@ -4,11 +4,15 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="profile-img">
-                <label for="file-upload"><img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
+                <label for="file-input"><img
+                        src=""
                         id="image" style="cursor: pointer;"></label>
 
-                <input type="file" id="file-upload" />
+                <input type="file" id="file-input" class="files" />
+                <div class="progress" >
+                    <div class="progress-bar" role="progressbar"id="progress" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
             <div class="title">
                 <div class="row">
@@ -39,64 +43,64 @@
             <div class="col-lg-8">
                 <div class="card" style="width: 35rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Thoong tin ca nhan</h5>
+                        <h5 class="card-title">Thông tin cá nhân</h5>
                         <div class="row">
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label>
-                                    Username
+                                    Tài khoản
                                 </label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= username %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" data-toggle="modal" data-target="#myModal">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label>Email</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= email %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <i class="fas fa-edit"></i>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Password</label>
+                            <div class="col-lg-3">
+                                <label>Mật Khẩu</label>
                             </div>
                             <div class="col-lg-6">
                                 <label>*********</label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalpassword()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Ngaysinh</label>
+                            <div class="col-lg-3">
+                                <label>Ngày sinh</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= birthday %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalbirthday()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <label>Gioi tinh</label>
+                            <div class="col-lg-3">
+                                <label>Giới tính</label>
                             </div>
                             <div class="col-lg-6">
                                 <label><%= gender %> </label>
                             </div>
-                            <div class="col-lg-4 text-right">
+                            <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalgender()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
@@ -112,8 +116,14 @@
 </div>
 
 <script>
+     var BASE_URL = '<%- BASE_URL %>';
+    var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
+    var token = '<%- token %>';
+
+    var imageAvatar = "<%- URL_IMAGE %>" + "<%- image %>";
+    $("#image").attr("src", imageAvatar);
     function openModalFullName() {
-        $.get("/profile/editfullName?name=<%- fullName %>", (data) => {
+        $.get("/users/profile/editfullName?name=<%- fullName %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
@@ -125,7 +135,7 @@
         });
     }
     function openModalgender(){
-        $.get("/profile/editgender?name=<%- gender %>",(data)=>{
+        $.get("/users/profile/editgender?name=<%- gender %>",(data)=>{
             $("#result").html(data);
 
             $("#editmodel").modal();
@@ -136,7 +146,7 @@
         })
     }
     function openModalpassword(){
-        $.get("/profile/editpassword?name=<%- password %>",(data)=>{
+        $.get("/users/profile/editpassword?name=<%- password %>",(data)=>{
             $('#result').html(data);
 
             $("#editmodel").modal();
@@ -147,7 +157,7 @@
         });
     }
     function openModalbirthday(){
-        $.get("/profile/editbirthday?name=<%- birthday %>",(data)=>{
+        $.get("/users/profile/editbirthday?name=<%- birthday %>",(data)=>{
             $("#result").html(data);
 
             $("#editmodel").modal();

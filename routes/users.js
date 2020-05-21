@@ -13,10 +13,23 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/profile',signin,async (req, res) => {
-  let response = await connect(apis.POST_PROFILE,{}, req.token);
-  res.locals = response.data_response;
-  res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
-  res.render('home/profile/index',{ layout: 'layouts/layoutHome' });
+  try {
+    let response = await connect(apis.POST_PROFILE, {}, req.token);
+    res.locals = response.data_response;
+    res.locals.BASE_URL = apis.BASE_URL;
+    res.locals.URL_IMAGE = apis.URL_IMAGE;
+    res.locals.POST_UPLOAD_IMAGE = apis.POST_UPLOAD_IMAGE;
+    res.locals.token = req.token;
+  
+    if (res.locals.birthday) {
+        res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
+    }
+
+    res.render('home/profile/index', { layout: 'layouts/layoutHome', scripts: require("../app_config/styleFreeProfile") });
+} catch (error) {
+    res.clearCookie("token");
+    res.redirect('/login')
+}
 });
 
 router.get('/profile/editfullName',async (req, res) =>{
@@ -26,7 +39,7 @@ router.get('/profile/editfullName',async (req, res) =>{
 
 router.post('/profile/editfullName',signin,async(req,res)=>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
+  res.redirect("/users/profile");
 });
 
 router.get('/profile/editpassword',async (req,res)=>{
@@ -35,7 +48,7 @@ router.get('/profile/editpassword',async (req,res)=>{
 
 router.post('/profile/editpassword',signin,async(req,res)=>{
   await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
-  res.redirect("/profile");
+  res.redirect("/users/profile");
 })
 
 router.get('/profile/editgender',async (req,res) =>{
@@ -44,7 +57,7 @@ router.get('/profile/editgender',async (req,res) =>{
 
 router.post('/profile/editgender',signin,async(req,res)=>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
+  res.redirect("/users/profile");
 });
 
 router.get('/profile/editbirthday', async (req,res)=>{
@@ -54,7 +67,7 @@ router.get('/profile/editbirthday', async (req,res)=>{
 
 router.post('/profile/editbirthday',signin,async(req,res) =>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/profile");
+  res.redirect("/users/profile");
 });
 
 module.exports = router;
