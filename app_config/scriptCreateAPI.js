@@ -1,3 +1,3 @@
 module.exports = [
-    '/javascripts/createapi.js'
+    '/javascripts/createAPI.js'
 ]
