@@ -69,7 +69,7 @@ router.get('/profile', async (req, res) => {
             res.locals.birthday = moment(res.locals.birthday).format('DD/MM/yyyy');
         }
 
-        res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile") });
+        res.render('admin/profile/index', { layout: 'layouts/_layout', scripts: require("../app_config/adminProfile"), style: require("../app_config/styleadminProfile") });
     } catch (error) {
         res.clearCookie("token");
         res.redirect('/login')

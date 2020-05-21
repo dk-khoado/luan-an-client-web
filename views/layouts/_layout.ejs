@@ -20,17 +20,15 @@
     <% } %>
 
     <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+
     <script src="/assets/js/chart.min.js"></script>
-    <script src="/assets/js/bs-charts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
-    <script src="/summernote/summernote.min.js"></script>
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/fontawesome/js/all.min.js"> </script>
-    <script src="/assets/jquery-ui-1.12.1/jquery-ui.min.js">
-    </script>
-      <script src="/assets/js/axios.min.js"></script>
+
+    <script src="/assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="/assets/js/axios.min.js"></script>
+    <script src="/assets/js/bs-charts.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -52,7 +50,7 @@
                                 class="fas fa-table"></i><span>Messenger</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/admin/404"><i
                                 class="fas fa-exclamation-circle"></i><span>Page Not Found</span></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="/admin/post"><i
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/admin/post"><i
                                 class="fas fa-window-maximize"></i><span>Tạo Bài Viết</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
@@ -224,15 +222,16 @@
                 </div>
                 <footer class="bg-white sticky-footer">
                     <div class="container my-auto">
-                        <div class="text-center my-auto copyright"><span>Copyright © EZCode <span id="time-copyright"></span>
+                        <div class="text-center my-auto copyright"><span>Copyright © EZCode <span
+                                    id="time-copyright"></span>
                         </div>
-                        
+
                     </div>
                 </footer>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-  
+
     <% if (typeof(scripts) !== 'undefined') { %>
     <% scripts.forEach(element => { %>
     <script src="<%- element %>"></script>
@@ -243,7 +242,12 @@
         $("#time-copyright").text(new Date().getFullYear());
     </script>
 
-<%- script %>
+    <%- script %>
 </body>
+
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/summernote/summernote.min.js"></script>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/fontawesome/js/all.min.js"> </script>
 
 </html>

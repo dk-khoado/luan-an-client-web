@@ -4,14 +4,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#image').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-
-        reader.onloadend = function (e) {
             base64 = e.target.result;
-            // console.log(base64);
-            console.log(base64.split(',')[1]);
             var data = {
                 pathGetImage: base64.split(',')[1]
             }
@@ -26,7 +19,9 @@ function readURL(input) {
                 .catch(function (error) {
                     console.log(error);
                 });
-        };
+        }
+
+        reader.readAsDataURL(input.files[0]);
 
     }
 
