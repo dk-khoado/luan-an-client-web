@@ -39,8 +39,17 @@ router.post('/managerapi',async function(req,res){
 });
 
 router.get('/detailapi',Auth,async(req,res)=>{
-  let response = await connect(apis.POST_API,{},req.token);
-  res.locals = response.data_response[0].endpoint_action;
+  res.locals.BASE_URL = apis.BASE_URL;
+  res.locals.POST_API = apis.POST_API;
+  let response = await connect(apis.POST_API,req.body,req.token);
+  res.locals= response.data_response[0].endpoint_action;
+  res.locals.errors = response.errors;
+  res.locals.is_success = response.is_success;
+  res.locals.status_code = response.status_code;
+  res.locals.message = response.message;
+  res.locals.table_name = req.body.table_name;
+  res.locals.name = req.body.name;
+  res.locals.dataType = req.body.dataType;
   res.render('manager/detailapi', {style:require('../app_config/detailapi'), layout:'layouts/layoutHome'});
 })
 //[end]

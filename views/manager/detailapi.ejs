@@ -17,11 +17,11 @@
                 <div class="row justify-content-between poperty">
                   <div class="col-12">
                     <div class="body"> {
-                      <p>"Error":"",</p>
-                      <p>"is_success":false,</p>
-                      <p>"status_code": 200,</p>
-                      <p>"data_response":[],</p>
-                      <p>"message":"cannot FOUND TABLE"</p> 
+                      <p name="errors">"Error":<%= errors%>,</p>
+                    <p name="is_success">"is_success":<%= is_success%>,</p>
+                    <p name="status_code">"status_code": <%= status_code%>,</p>
+                    <p>"data_response":[],</p>
+                    <p name="message">"message":<%= message%></p> 
                     }
                   </div>
                   </div>
@@ -112,22 +112,22 @@
             <div class="row justify-content-between poperty">
                 <div class="col-5" style="border: 1px solid #D2D2D2;">
                   <div class="body" name="body"> {
-                    <p>"Error":"",</p>
-                    <p>"is_success":false,</p>
-                    <p>"status_code": 200,</p>
+                    <p name="errors">"Error":<%= errors%>,</p>
+                    <p name="is_success">"is_success":<%= is_success%>,</p>
+                    <p name="status_code">"status_code": <%= status_code%>,</p>
                     <p>"data_response":[],</p>
-                    <p>"message":"cannot FOUND TABLE"</p> 
-                  }
+                    <p name="message">"message":<%= message%></p> 
+                  } 
                 </div>
                 </div>
                 <div class="col-2"></div>
                  <div class="col-5" style="border: 1px solid #d2d2d2;">
                   <div class="body"> {
-                    <p>"Table_name":"ahihi ahihi11",</p>
-                    <p>"table_fields":[</p>
-                    <p>{"name": "username","type":"String"},</p>
-                    <p>{"name":"password","type":"Int"}</p>
-                    <p>]</p> 
+                    <p name="table_name">"table_name":<%= table_name%>,</p>
+                    <p name="table_fields">"table_fields":[</p>
+                    <p>{<span name="name">"name": <%= name%></span>,<span name="dataType">"dataType":<%= dataType%></span>},</p>
+                    <p>]
+                    </p> 
                   }
                 </div>
               </div>
@@ -148,7 +148,7 @@
 </div>
 <div class="row custom-row" style="border: 1px solid #B7B7B7;">
   <div class="col-8">
-    <a data-toggle="modal" data-target="#detail2"> </a>
+    <a data-toggle="modal" data-target="#detail2"><%= GET_ALL %>  </a>
   </div>
   <div class="col-4">
     <button class="btn btn-success" type="button" id="run" data-toggle="modal" data-target="#myModal">Run</button>
@@ -162,7 +162,7 @@
 </div>
 <div class="row custom-row" style="border: 1px solid #B7B7B7;">
   <div class="col-8">
-    <a data-toggle="modal" data-target="#detail2"></a>
+    <a data-toggle="modal" data-target="#detail2"><%= GET_BY_ID %> </a>
   </div>
   <div class="col-4">
     <button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal" id="run">Run</button>
@@ -176,7 +176,7 @@
 </div>
 <div class="row custom-row" style="border: 1px solid #B7B7B7;">
   <div class="col-8">
-    <a data-toggle="modal" data-target="#detail2"> </a>
+    <a data-toggle="modal" data-target="#detail2"><%= INSERT %> </a>
   </div>
   <div class="col-4">
     <button class="btn btn-success" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
@@ -190,7 +190,7 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2"> </a>
+      <a data-toggle="modal" data-target="#detail2"><%= UPDATE %>  </a>
     </div>
     <div class="col-4">
       <button class="btn btn-success" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
@@ -204,7 +204,7 @@
       </div>
     <div class="row custom-row" style="border: 1px solid #B7B7B7;">
       <div class="col-8">
-        <a data-toggle="modal" data-target="#detail2"> </a>
+        <a data-toggle="modal" data-target="#detail2"><%= DELETE %>  </a>
       </div>
       <div class="col-4">
         <button class="btn btn-success" type="button" id="run">Run</button>
@@ -218,7 +218,7 @@
     </div>
     <div class="row custom-row" style="border: 1px solid #B7B7B7;">
       <div class="col-8">
-        <a data-toggle="modal" data-target="#detail2"> </a>
+        <a data-toggle="modal" data-target="#detail2"><%= DELETE %>  </a>
       </div>
       <div class="col-4">
         <button class="btn btn-success" type="button" id="run">Run</button>
@@ -227,5 +227,5 @@
     </div>
     <div id="result">
     </div>
-    
+  
     
