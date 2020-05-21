@@ -61,7 +61,7 @@ router.post('/profile/editgender',signin,async(req,res)=>{
 });
 
 router.get('/profile/editbirthday', async (req,res)=>{
-  res.locals.birthday = req.query.name;
+  res.locals.birthday = req.query.value;
   res.render('home/profile/_editbirthday',{ layout : 'layouts/_layoutNull'});
 })
 

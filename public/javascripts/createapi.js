@@ -101,7 +101,7 @@ function createAPI() {
         headers:
             { Authorization: "Bearer " + token }
     };
-    axios.get(BASE_URL + POST_UPLOAD_IMAGE, data, options)
+    axios.get(BASE_URL + POST_CREATE_API, data, options)
         .then(function (response) {
             console.log(response);
         })
