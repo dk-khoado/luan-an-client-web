@@ -148,7 +148,7 @@
 </div>
 <div class="row custom-row" style="border: 1px solid #B7B7B7;">
   <div class="col-8">
-    <a data-toggle="modal" data-target="#detail2"><%= GET_ALL %>  </a>
+    <a onclick="onModalGetAll()"><%= GET_ALL %>  </a>
   </div>
   <div class="col-4">
     <button class="btn btn-success" type="button" id="run" data-toggle="modal" data-target="#myModal">Run</button>
@@ -204,7 +204,7 @@
       </div>
     <div class="row custom-row" style="border: 1px solid #B7B7B7;">
       <div class="col-8">
-        <a data-toggle="modal" data-target="#detail2"><%= DELETE %>  </a>
+        <a data-toggle="modal" data-target="#detail2"><%=DELETE %>  </a>
       </div>
       <div class="col-4">
         <button class="btn btn-success" type="button" id="run">Run</button>
@@ -227,5 +227,16 @@
     </div>
     <div id="result">
     </div>
-  
+  <script>
+    function onModalGetAll(){
+      $("#result").html();
+
+            $("#detail2").modal();
+
+            $('#closemodal').click(function () {
+                $('#detail2').modal("hide");
+                $("#result").html();
+            });
+    }
+  </script>
     
