@@ -5,8 +5,11 @@ const apis = require("../helpers/APIs");
 const connect = require('../helpers/APIHelper');
 
 
-var bundlestyleCreateAPI = require('../app_config/styleCreateAPI');
-var bundlescriptCreateAPI = require('../app_config/scriptCreateAPI');
+var bundleStyleCreateAPI = require('../app_config/styleCreateAPI');
+var bundleScriptCreateAPI = require('../app_config/scriptCreateAPI');
+
+var bundleStyleManagerAPI = require('../app_config/styleManagerAPI');
+var bundleScriptManagerAPI = require('../app_config/scriptManagerAPI');
 
 router.get('/createapi', Auth, function (req, res, next) {
   res.locals.BASE_URL = apis.BASE_URL;
@@ -14,14 +17,20 @@ router.get('/createapi', Auth, function (req, res, next) {
   res.locals.token = req.token;
   res.render('manager/createapi', {
     title: 'Create API',
-    style: bundlestyleCreateAPI,
-    scripts: bundlescriptCreateAPI
+    style: bundleStyleCreateAPI,
+    scripts: bundleScriptCreateAPI
   });
 });
 
 router.get('/api', Auth, function (req, res, next) {
-
-  res.render('manager/managerapi', { title: 'Manager API' });
+  res.locals.BASE_URL = apis.BASE_URL;
+  res.locals.POST_MANANER_API = apis.POST_MANANER_API;
+  res.locals.token = req.token;
+  res.render('manager/managerapi', { 
+    title: 'Manager API',
+    style: bundleStyleManagerAPI,
+    scripts: bundleScriptManagerAPI
+  });
 });
 
 router.post('/managerapi', async function (req, res) {
