@@ -24,35 +24,37 @@ router.get('/api', Auth, function (req, res, next) {
   res.render('manager/managerapi', { title: 'Manager API' });
 });
 
-router.post('/managerapi',async function(req,res){
-  await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID',{
-    "table_name":req.body.table_name
+router.post('/managerapi', async function (req, res) {
+  await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID', {
+    "table_name": req.body.table_name
   })
-  .then(function(respone){
-    if(respone.data.is_success == true){
-      
-    }
-  })
-  .catch(function (error) {
-    console.log("[error]",error);      
-  });
+    .then(function (respone) {
+      if (respone.data.is_success == true) {
+
+      }
+    })
+    .catch(function (error) {
+      console.log("[error]", error);
+    });
 });
 
-router.get('/detailapi',Auth,async(req,res)=>{
+router.get('/detail/:tablename', Auth, async (req, res) => {
+  var tablename = req.params.tablename;
+  console.log(tablename);
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_API = apis.POST_API;
-  let response = await connect(apis.POST_API,{},req.token);
+  let response = await connect(apis.POST_API, {}, req.token);
   res.locals = response.data_response[0].endpoint_action;
   res.locals.errors = response.errors;
   res.locals.is_success = response.is_success;
   res.locals.status_code = response.status_code;
   res.locals.message = response.message;
-  console.log(response.data_response.table_name);
-   res.locals.table_name = response.table_name;
-   console.log(response.table_name);
-   res.locals.name = response.name;
-  res.locals.dataType = response.dataType;
-  res.render('manager/detailapi', {style:require('../app_config/detailapi'), layout:'layouts/layoutHome'});
-})
+  res.locals.table_name = response.data_response[0].table_name;
+  res.locals.name = response.data_response[0].table_fields[0].name;
+  res.locals.dataType = response.data_response[0].table_fields[0].dataType;
+  res.render('manager/detail', { style: require('../app_config/detail'), layout: 'layouts/layoutHome' });
+});
+
+
 //[end]
 module.exports = router;

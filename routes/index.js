@@ -139,6 +139,9 @@ router.get('/newsfeed', function(req,res,next){
   res.render('newsfeed/index',{title: "Bảng tin"});
 });
 
+router.get('/tutorial',function(req,res,next){
+  res.render('tutorial/index',{style:require('../app_config/styletutorial')})
+});
 
 
 module.exports = router;
