@@ -27,30 +27,30 @@
             <div class="row-header px-0">
                 <div class="row-text">
                     <div class="col-12 text-left">
-                        <span class="label" id="name" >Action of user api</span>
+                        <span class="label" id="name">Vui lòng chọn API</span>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-success w-75" id="getAll"><span>get all</span> </button>
+                    <button class="btn btn-success w-75" id="getAll" disabled><span>get all</span> </button>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
+                    <input type="number" class="form-control" placeholder="Enter id" aria-label="Enter id" id="NumberID">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-success w-75" id="getbyID"><span>get by id</span></button>
+                    <button class="btn btn-success w-75" id="getbyID" disabled><span>get by id</span></button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-danger w-75" id="deleteAll"><span>delete all</span> </button>
+                    <button class="btn btn-danger w-75" id="deleteAll" disabled><span>delete all</span> </button>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Enter id" aria-label="Enter id">
+                    <input type="number" class="form-control" placeholder="Enter id" aria-label="Enter id" id="RemoveID" min="0">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-danger w-75 px-0" id="deletebyID"><span>delete by id</span></button>
+                    <button class="btn btn-danger w-75 px-0" id="deletebyID" type="submit" disabled><span>delete by id</span></button>
                 </div>
             </div>
             <div class="row" style="padding: 50px;">
@@ -58,14 +58,10 @@
                     <span class="label">Result</span>
                 </div>
                 <div class="col-8 text-left">
-                    <button class="btn btn-secondary btn-sm" data-toggle="modal"
-                        data-target="#basicExampleModal"
-                        style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;display: none;"
-                        id="title">Open with table</button>
+                    <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#basicExampleModal" style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;display: none;" id="title">Open with table</button>
                     <!-- Button trigger modal -->
                     <!-- Modal -->
-                    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -108,17 +104,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save change</button>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="delete" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -131,8 +121,7 @@
                                 <span>Bạn có muốn xóa</span>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary">OK</button>
                             </div>
                         </div>
@@ -143,21 +132,7 @@
     </div>
 </div>
 <script>
-    
     var BASE_URL = '<%- BASE_URL %>';
     var POST_MANANER_API = '<%- POST_MANANER_API %>';
     var token = '<%- token %>';
-
-    $('#getAll').click(function () {
-        $('#title').show();
-    });
-    $('#getbyID').click(function () {
-        $('#title').show();
-    });
-    $('#deleteAll').click(function () {
-        $('#title').show();
-    })
-    $('#deletebyID').click(function () {
-        $('#title').show();
-    })
 </script>

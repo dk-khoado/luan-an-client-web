@@ -12,13 +12,11 @@
                         </label>
 
                         <input id="file-input" type="file" />
-                        <div class="progress" >
-                            <div class="progress-bar" role="progressbar"id="progress" aria-valuenow="25"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" id="progress" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
         </div>
@@ -46,7 +44,7 @@
 
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label><%= fullName %> </label>
+                                <label><%= getdata.fullName %> </label>
                             </div>
 
                         </div>
@@ -64,7 +62,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label><%= username %></label>
+                                <label><%= getdata.username %></label>
                             </div>
                         </div>
                     </div>
@@ -77,7 +75,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label><%= email %></label>
+                                <label><%= getdata.email %></label>
                             </div>
                         </div>
                     </div>
@@ -108,7 +106,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label> <%= gender %> </label>
+                                <label> <%= getdata.gender %> </label>
                             </div>
                         </div>
                         <div class="col-4 text-right">
@@ -125,7 +123,7 @@
                         </div>
                         <div class="col-6">
                             <div class="custom-mt-1">
-                                <label><%= birthday %> </label>
+                                <label><%= getdata.birthday %> </label>
                             </div>
                         </div>
                         <div class="col-4 text-right">
@@ -197,16 +195,16 @@
     var BASE_URL = '<%- BASE_URL %>';
     var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
     var token = '<%- token %>';
-    var imageAvatar = "<%- URL_IMAGE %>" + "<%- image %>";
+    var imageAvatar = "<%- URL_IMAGE %>" + "<%- getdata.image %>";
     $("#image").attr("src", imageAvatar);
-    
+
     function openModalFullName() {
-        $.get("/admin/profile/editFullname?name=<%- fullName %>", (data) => {
+        $.get("/admin/profile/editFullname?name=<%- getdata.fullName %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
 
-            $('#closemodal').click(function () {
+            $('#closemodal').click(function() {
                 $('#editmodel').modal("hide");
                 $("#result").html();
 
@@ -215,38 +213,40 @@
     }
 
     function openModalPassword() {
-        $.get("/admin/profile/editpassword?name=<%- password %>", (data) => {
+        $.get("/admin/profile/editpassword?name=<%- getdata.password %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
 
-            $('#closemodal').click(function () {
+            $('#closemodal').click(function() {
                 $('#editmodel').modal("hide");
                 $("#result").html();
 
             });
         })
     }
+
     function openModalGender() {
-        $.get("/admin/profile/editgender?name=<%- gender %>", (data) => {
+        $.get("/admin/profile/editgender?name=<%- getdata.gender %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
 
-            $('#closemodal').click(function () {
+            $('#closemodal').click(function() {
                 $('#editmodel').modal("hide");
                 $("#result").html();
 
             });
         })
     }
+
     function openModalBirthday() {
-        $.get("/admin/profile/editbirthday?value=<%- birthday %>", (data) => {
+        $.get("/admin/profile/editbirthday?value=<%- getdata.birthday %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
 
-            $('#closemodal').click(function () {
+            $('#closemodal').click(function() {
                 $('#editmodel').modal("hide");
                 $("#result").html();
 

@@ -18,12 +18,12 @@
 
                             <% if (typeof(birthday) === 'undefined') { %>
 
-                            <input type="text" id="datepicker" name="birthday" value="">
+                                <input type="text" id="datepicker" name="birthday" value="">
 
-                            <% } else { %>
+                                <% } else { %>
 
-                            <input type="text" id="datepicker" name="birthday" value="<%= birthday %>">
-                            <% }  %>
+                                    <input type="text" id="datepicker" name="birthday" value="<%= birthday %>">
+                                    <% }  %>
 
                         </div>
                     </div>
@@ -38,7 +38,7 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         $("#datepicker").datepicker();
     });
 </script>
