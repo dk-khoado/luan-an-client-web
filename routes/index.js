@@ -123,6 +123,10 @@ router.get('/notify_fg',async(req,res)=>{
   res.render('home/notify_fg',{title: 'Notify', layout:'layouts/layoutHome'});
 });
 
+router.get('/resetnewpassword',async(req,res)=>{
+  res.render('home/resetnewpassword',{title:"Reset Password", layout:'layouts/layoutHome',style:require("../app_config/styleReset")});
+})
+
 router.get('/newsfeed', async (req, res) => {
   res.render('newsfeed/index', { title: "News Feed" })
 });
@@ -142,6 +146,10 @@ router.get('/newsfeed', function(req,res,next){
 router.get('/tutorial',function(req,res,next){
   res.render('tutorial/index',{style:require('../app_config/styletutorial')})
 });
+
+router.get('/tutor',function(req,res,next){
+  res.render('tutorial/tutorial',{style:require('../app_config/styletutorial')});
+})
 
 
 module.exports = router;

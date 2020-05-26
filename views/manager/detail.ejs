@@ -3,7 +3,6 @@
 
   <!-- Modal -->
   <div id="table_name">
-    <%= table_name %> 
   </div>
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -20,11 +19,11 @@
                 <div class="row justify-content-between poperty">
                   <div class="col-12">
                     <div class="body"> {
-                      <p name="errors">"Error":<%= errors%>,</p>
-                      <p name="is_success">"is_success":<%= is_success%>,</p>
-                      <p name="status_code">"status_code": <%= status_code%>,</p>
+                      <p name="errors">"Error",</p>
+                      <p name="is_success">"is_success":</p>
+                      <p name="status_code">"status_code": ,</p>
                       <p>"data_response":[],</p>
-                      <p name="message">"message":<%= message%></p>
+                      <p name="message">"message":</p>
                       }
                     </div>
                   </div>
@@ -115,21 +114,21 @@
               <div class="row justify-content-between poperty">
                 <div class="col-5" style="border: 1px solid #D2D2D2;">
                   <div class="body" name="body"> {
-                    <p name="errors">"Error":<%= errors%>,</p>
-                    <p name="is_success">"is_success":<%= is_success%>,</p>
-                    <p name="status_code">"status_code": <%= status_code%>,</p>
+                    <p name="errors">"Error":,</p>
+                    <p name="is_success">"is_success":,</p>
+                    <p name="status_code">"status_code": ,</p>
                     <p>"data_response":[],</p>
-                    <p name="message">"message":<%= message%></p>
+                    <p name="message">"message":</p>
                     }
                   </div>
                   <div class="col-1"></div>
                 </div>
                 <div class="col-6" style="border: 1px solid #d2d2d2;">
                   <div class="body"> {
-                    <p name="table_name">"table_name":<%= table_name%>,</p>
+                    <p name="table_name">"table_name":,</p>
                     <p name="table_fields">"table_fields":[</p>
-                    <p>{<span name="name">"name": <%= name%></span>,<span
-                        name="dataType">"dataType":<%= dataType%></span>},</p>
+                    <p>{<span name="name">"name":</span>,<span
+                        name="dataType">"dataType":%></span>},</p>
                     <p>]
                     </p>
                     }
@@ -152,11 +151,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a onclick="onModalGetAll()" id="copylink"><%= GET_ALL %> </a>
+      <a onclick="onModalGetAll()" id="copylink"></a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" id="run" data-toggle="modal" data-target="#myModal">Run</button>
-      <button class="btn btn-outline" type="button" id="copy">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" id="run" data-toggle="modal" data-target="#myModal">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -166,11 +165,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a onclick="onModalGetAll()" id="copylink"><%= GET_BY_ID %> </a>
+      <a onclick="onModalGetAll()" id="copylink"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal" id="run">Run</button>
-      <button class="btn btn-outline" type="button" id="copy">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#myModal" id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -180,11 +179,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"><%= INSERT %> </a>
+      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
-      <button class="btn btn-outline" type="button" id="copy" onclick="copy()">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy" onclick="copy()">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -194,11 +193,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"><%= UPDATE %> </a>
+      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
-      <button class="btn btn-outline" type="button" id="copy">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row">
@@ -208,11 +207,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"><%=DELETE %> </a>
+      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" id="run">Run</button>
-      <button class="btn btn-outline" type="button" id="copy">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row">
@@ -222,11 +221,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"><%= DELETE %> </a>
+      <a data-toggle="modal" data-target="#detail2" id="copylink"></a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success" type="button" id="run">Run</button>
-      <button class="btn btn-outline" type="button" id="copy">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   

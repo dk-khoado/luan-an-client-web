@@ -14,20 +14,29 @@
   
   .custom-row{
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
+    width: 880px;
   }
   .custom-col{
     padding-left: 0px;
     padding-right: 0px;
   }
+  .col-4{
+    padding-left: 70px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
   #run{
     border-radius: 16px;
     width: 100px;
+    background-color: #00FF5D;
+
   }
   #copy{
     border-radius: 16px;
     width: 100px;
     background-color: #DFDFDF;
+    
   }
   .custome-row{
     margin-top: 10px;
@@ -38,42 +47,42 @@
     margin-top: 10px;
   }
   .getall{
-    border:1px solid black;
-    background-color: green;
+    background-color:#00C853;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     width: 10rem;
+    margin-top: 20px;
   }
   .getbyid{
-    border:1px solid black;
-    background-color: green;
+    background-color: #00C853;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+    margin-top: 20px;
     width: 10rem;
   }
   .insert{
-    border:1px solid black;
-    background-color: blue;
+    background-color: #00B8D4;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 20px;
     text-align: center;
     width: 10rem;
   }
   .update{
-    border:1px solid black;
-    background-color: green;
+    background-color: #00C853;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 20px;
     text-align: center;
     width: 10rem;
   }
   .delete{
-    border:1px solid #000000;
-    background-color: red;
+    background-color: #E53935;
     color: white;
-    font-size: 20px;
+    margin-top: 20px;
+    font-size: 18px;
     text-align: center;
     width: 10rem;
   }

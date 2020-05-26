@@ -2,7 +2,7 @@
   body{
     width: 100%;
     height: auto;
-    background-color: gray;
+    background: -webkit-linear-gradient(0deg, #3c96ff 0%, #2dfbff 100%);
     font-family: "Robato",sans-serif;
     font-size: 17px;
   }

@@ -1,3 +1,3 @@
 module.exports =[
-    '/resetpass.css'
+    '/stylesheets/resetpass.css'
 ]
