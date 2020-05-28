@@ -101,11 +101,11 @@ function createAPI() {
         headers:
             { Authorization: "Bearer " + token }
     };
-    axios.get(BASE_URL + POST_CREATE_API, data, options)
+    axios.post(BASE_URL + POST_CREATE_API, data, options)
         .then(function (response) {
             console.log(response);
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
         });
 }
