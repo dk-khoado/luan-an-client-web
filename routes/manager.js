@@ -33,20 +33,6 @@ router.get('/api', Auth, function (req, res, next) {
   });
 });
 
-router.post('/managerapi',async function(req,res){
-  await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID',{
-    "table_name":req.body.table_name
-  })
-  .then(function(respone){
-    if(respone.data.is_success == true){
-      
-    }
-  })
-  .catch(function (error) {
-    console.log("[error]",error);      
-  });
-});
-
 router.get('/detailapi',Auth,async(req,res)=>{
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_API = apis.POST_API;

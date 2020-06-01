@@ -3,7 +3,7 @@ function ItemAPICompoment(name, endpoint) {
     <td onclick="setValue('${name}', '${endpoint}')" style="cursor: pointer;">${name}</td>
     <td>  #  </td>
     <td>
-        <button class="btn btn-success btn-sm">View</button>
+        <a class="btn btn-success btn-sm" href="/manager/detailapi">View</a>
         <button class="btn btn-primary btn-sm">Edit</button>
         <button class="btn btn-secondary btn-sm" data-toggle="modal"
             data-target="#delete">Delete</button>

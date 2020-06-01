@@ -10,6 +10,7 @@ const moment = require('moment');
 var bundleStyleAccount = require('../app_config/styleAccount');
 var bundleStyleReset = require('../app_config/styleReset');
 var bundleStyleNewsFeed = require('../app_config/styleNewsFeed');
+var bundleStyleIndex = require("../app_config/styleIndex");
 
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleScriptChat = require('../app_config/adminChat');
@@ -18,7 +19,10 @@ var bundleScriptChat = require('../app_config/adminChat');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-    res.render('index', { title: 'Trang Chủ' });
+    res.render('index', { 
+        title: 'Trang Chủ',
+        style: bundleStyleIndex
+     });
 });
 
 router.get('/login', function(req, res, next) {
@@ -135,10 +139,6 @@ router.get('/error', function(req, res, next) {
 
 router.get('/successlogin', function(req, res, next) {
     res.render('success/loginsuccess', { title: 'LoginSuccess' });
-});
-
-router.get('/newsfeed', function(req, res, next) {
-    res.render('newsfeed/index', { title: "Bảng tin" });
 });
 
 

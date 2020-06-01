@@ -7,3 +7,10 @@
     color: black;
     font-size: 18px;
 }
+.text-bold{
+    font-weight: 900;
+    font-size: 20px;
+}
+.custom-mt-50{
+    margin-top: 50;
+}
