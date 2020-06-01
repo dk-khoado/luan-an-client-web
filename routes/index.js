@@ -83,7 +83,6 @@ router.post('/register', async function(req, res) {
         });
 })
 
-<<<<<<< HEAD
 router.post('/login', async function (req, res) {
   await axios.post('https://api-server-game.herokuapp.com/api/account/login', {
     "username": req.body.username,
@@ -106,29 +105,6 @@ router.post('/login', async function (req, res) {
       console.log("[error]", error);
       res.redirect('/login');
     });
-=======
-router.post('/login', async function(req, res) {
-    await axios.post('https://api-server-game.herokuapp.com/api/account/login', {
-            "username": req.body.username,
-            "password": req.body.password,
-            "email": req.body.username
-        })
-        .then(function(respone) {
-            if (respone.data.is_success == true) {
-                let data = respone.data;
-
-                res.cookie('token', data.data_response.token, { signed: true, maxAge: 604800 });
-                res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 86400 });
-                res.redirect('/admin');
-            } else {
-                res.redirect('/login');
-            }
-        })
-        .catch(function(error) {
-            console.log("[error]", error);
-            res.redirect('/login');
-        });
->>>>>>> remotes/origin/tu
 });
 
 router.post('/forgotpassword', async(req, res) => {
