@@ -16,6 +16,7 @@ options = {
 };
 var data = [];
 axios.post(BASE_URL + POST_MANANER_API, data, options)
+
     .then(function (response) {
           console.log(response.data.data_response);
         var data = response.data.data_response;

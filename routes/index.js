@@ -105,6 +105,7 @@ router.post('/login', async function (req, res) {
 router.post('/forgotpassword',async (req,res)=>{
   let respone = await connect(apis.POST_FORGOT,req.body,{});
   if(respone.is_success == true){
+      console.log(respone.is_success);
     res.redirect('/notify_fg');
   }
   else{
@@ -147,7 +148,7 @@ router.get('/tutorial',function(req,res,next){
   res.render('tutorial/index',{style:require('../app_config/styletutorial')})
 });
 
-router.get('/tutor',function(req,res,next){
+router.get('/tutorial/tieudebaihuongdan',function(req,res,next){
   res.render('tutorial/tutorial',{style:require('../app_config/styletutorial')});
 })
 

@@ -24,22 +24,11 @@ router.get('/api', Auth, function (req, res, next) {
   res.render('manager/managerapi', { title: 'Manager API' });
 });
 
-router.post('/managerapi', async function (req, res) {
-  await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID', {
-    "table_name": req.body.table_name
-  })
-    .then(function (respone) {
-      if (respone.data.is_success == true) {
-
-      }
-    })
-    .catch(function (error) {
-      console.log("[error]", error);
-    });
-});
-
 router.get('/detail/:tablename', Auth, async (req, res) => {
   var tablename = req.params.tablename;
+  res.locals.BASE_URL = apis.BASE_URL;
+  res.locals.POST_API = apis.POST_API;
+  res.locals.token = req.token;
   res.render('manager/detail', { style: require('../app_config/detail'), layout: 'layouts/layoutHome' });
 });
 
