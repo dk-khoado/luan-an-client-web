@@ -33,6 +33,7 @@ router.get('/api', Auth, function (req, res, next) {
   });
 });
 
+<<<<<<< HEAD
 router.post('/managerapi', async function (req, res) {
   await axios.post('https://api-server-game.herokuapp.com/api/v1/getAllAPIByID', {
     "table_name": req.body.table_name
@@ -50,6 +51,9 @@ router.post('/managerapi', async function (req, res) {
 router.get('/detail/:tablename', Auth, async (req, res) => {
   var tablename = req.params.tablename;
   console.log(tablename);
+=======
+router.get('/detailapi',Auth,async(req,res)=>{
+>>>>>>> remotes/origin/tu
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_API = apis.POST_API;
   let response = await connect(apis.POST_API, {}, req.token);

@@ -6,7 +6,7 @@ var NameOfFiledCompoment = (index) => {
             aria-describedby="basic-addon1" id="namefiled" required oninput="validateMatch(${index})" required autocomplete="off">
     </div>
     <div class="col-lg-4 text-right">
-        <select class="browser-default custom-select" name="dataType">
+        <select class="browser-default custom-select" name="dataType" id="datatype-${index}">
         <option value="Int">Int</option>
         <option value="String">String</option>
         <option value="Boolean">Boolean</option>
@@ -62,7 +62,6 @@ function validateMatch(id) {
 }
 
 function createAPI() {
-    // console.log($("#create")).serilizeArray();
     var validateAPIName = /^[A-Za-z0-9_]+$/.test($('#table_name').val());
     if (validateAPIName == false) {
         alert("Tên API không được để trống");
@@ -81,7 +80,7 @@ function createAPI() {
     }
     var table_fields = $("#create").serializeArray();
 
-    var temp = {};
+    let temp = new Object();
 
     table_fields.forEach(element => {
         switch (element.name) {
@@ -91,12 +90,13 @@ function createAPI() {
             case "dataType":
                 temp.dataType = element.value;
                 data.table_fields.push(temp);
+                temp = new Object();
                 break;
             default:
                 break;
         }
     });
-    console.log(data);
+    // console.log(data);
     options = {
         headers:
             { Authorization: "Bearer " + token }

@@ -6,6 +6,8 @@ const apis = require('../helpers/APIs');
 const signin = require('../helpers/Auth'); 
 const moment = require('moment');
 
+var bundleScriptProfile = require("../app_config/scriptProfile");
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
