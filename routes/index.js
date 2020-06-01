@@ -88,8 +88,8 @@ router.post('/login', async function (req, res) {
       if (respone.data.is_success == true) {
         let data = respone.data;
 
-        res.cookie('token', data.data_response.token, { signed: true, maxAge: 604800 });        
-        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 86400 });             
+        res.cookie('token', data.data_response.token, { signed: true, maxAge:7* 24 * 60 *60 *1000 });        
+        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 });             
         res.redirect('/admin');
       }
       else {
