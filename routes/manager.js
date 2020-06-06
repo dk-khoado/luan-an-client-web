@@ -36,16 +36,18 @@ router.get('/api', Auth, function (req, res, next) {
 router.get('/detailapi',Auth,async(req,res)=>{
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_API = apis.POST_API;
-  let response = await connect(apis.POST_API,req.body,req.token);
-  res.locals= response.data_response[0].endpoint_action;
+  let response = await connect(apis.POST_API, {}, req.token);
+  res.locals = response.data_response[0].endpoint_action;
   res.locals.errors = response.errors;
   res.locals.is_success = response.is_success;
   res.locals.status_code = response.status_code;
   res.locals.message = response.message;
-  res.locals.table_name = req.body.table_name;
-  res.locals.name = req.body.name;
-  res.locals.dataType = req.body.dataType;
-  res.render('manager/detailapi', {style:require('../app_config/detailapi'), layout:'layouts/layoutHome'});
-})
+  res.locals.table_name = response.data_response[0].table_name;
+  res.locals.name = response.data_response[0].table_fields[0].name;
+  res.locals.dataType = response.data_response[0].table_fields[0].dataType;
+  res.render('manager/detail', { style: require('../app_config/detail'), layout: 'layouts/layoutHome' });
+});
+
+
 //[end]
 module.exports = router;

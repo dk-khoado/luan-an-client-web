@@ -1,0 +1,41 @@
+
+
+.row-custome-qc{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.container_custome{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 10px;
+}
+p{
+    margin-left: 20px;
+}
+.text{
+    margin-left: 10px;
+}
+.row{
+    margin-left: 15px;
+}
+
+.row-margin{
+    margin-top: 10px;
+}
+
+.img-post {
+    margin: 0 20px 10px 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 560px;
+    height: 200px;
+    object-fit: cover;
+}
+.img-post-in{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #818181;
+    width: 330px;
+    height: 140px;
+    object-fit: cover;
+}

@@ -83,27 +83,28 @@ router.post('/register', async function(req, res) {
         });
 })
 
-router.post('/login', async function(req, res) {
-    await axios.post('https://api-server-game.herokuapp.com/api/account/login', {
-            "username": req.body.username,
-            "password": req.body.password,
-            "email": req.body.username
-        })
-        .then(function(respone) {
-            if (respone.data.is_success == true) {
-                let data = respone.data;
+router.post('/login', async function (req, res) {
+  await axios.post('https://api-server-game.herokuapp.com/api/account/login', {
+    "username": req.body.username,
+    "password": req.body.password,
+    "email": req.body.username
+  })
+    .then(function (respone) {
+      if (respone.data.is_success == true) {
+        let data = respone.data;
 
-                res.cookie('token', data.data_response.token, { signed: true, maxAge: 604800 });
-                res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 86400 });
-                res.redirect('/admin');
-            } else {
-                res.redirect('/login');
-            }
-        })
-        .catch(function(error) {
-            console.log("[error]", error);
-            res.redirect('/login');
-        });
+        res.cookie('token', data.data_response.token, { signed: true, maxAge:7* 24 * 60 *60 *1000 });        
+        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 });             
+        res.redirect('/admin');
+      }
+      else {
+        res.redirect('/login');
+      }
+    })
+    .catch(function (error) {
+      console.log("[error]", error);
+      res.redirect('/login');
+    });
 });
 
 router.post('/forgotpassword', async(req, res) => {
@@ -141,6 +142,9 @@ router.get('/successlogin', function(req, res, next) {
     res.render('success/loginsuccess', { title: 'LoginSuccess' });
 });
 
+router.get('/tutorial',function(req,res,next){
+  res.render('tutorial/index',{style:require('../app_config/styletutorial')})
+});
 
 
 module.exports = router;
