@@ -107,13 +107,15 @@ router.post('/login', async function (req, res) {
     });
 });
 
-router.post('/forgotpassword', async(req, res) => {
-    let respone = await connect(apis.POST_FORGOT, req.body, {});
-    if (respone.is_success == true) {
-        res.redirect('/notify_fg');
-    } else {
-        res.redirect('/forgotpassword');
-    }
+router.post('/forgotpassword',async (req,res)=>{
+  let respone = await connect(apis.POST_FORGOT,req.body,{});
+  if(respone.is_success == true){
+      console.log(respone.is_success);
+    res.redirect('/notify_fg');
+  }
+  else{
+    res.redirect('/forgotpassword');
+  }
 })
 
 
@@ -127,15 +129,16 @@ router.get('/notify_fg', async(req, res) => {
     res.render('home/notify_fg', { title: 'Notify', layout: 'layouts/layoutHome' });
 });
 
-router.get('/newsfeed', async(req, res) => {
-    res.render('newsfeed/index', {
-        title: "News Feed",
-        style: bundleStyleNewsFeed
-    })
+router.get('/resetnewpassword',async(req,res)=>{
+  res.render('home/resetnewpassword',{title:"Reset Password", layout:'layouts/layoutHome',style:require("../app_config/styleReset")});
+})
+
+router.get('/newsfeed', async (req, res) => {
+  res.render('newsfeed/index', { title: "News Feed" })
 });
 
-router.get('/error', function(req, res, next) {
-    res.render('error/errorpage', { title: 'ErorrPage' });
+router.get('/error',function(req,res,next){
+  res.render('error/errorpage',{title:'ErorrPage'});
 });
 
 router.get('/successlogin', function(req, res, next) {
@@ -145,6 +148,10 @@ router.get('/successlogin', function(req, res, next) {
 router.get('/tutorial',function(req,res,next){
   res.render('tutorial/index',{style:require('../app_config/styletutorial')})
 });
+
+router.get('/tutorial/tieudebaihuongdan',function(req,res,next){
+  res.render('tutorial/tutorial',{style:require('../app_config/styletutorial')});
+})
 
 
 module.exports = router;
