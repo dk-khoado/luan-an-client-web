@@ -19,7 +19,7 @@ axios.post(BASE_URL + POST_MANANER_API, data, options)
         data = response.data.data_response;
         data.forEach(element => {
             $('#apiList').append(ItemAPICompoment(element.table_name, element._id));
-            // console.log(element);
+            // console.log(element);    
         });
     })
     .catch(function(error) {
@@ -39,6 +39,9 @@ function setValue(name, id) {
 
     $("#getAll").unbind('click');
     $("#getbyID").unbind('click');
+    $("#deleteAll").unbind('click');
+    $("#deletebyID").unbind('click');
+
 
     var endpoint = data.find(v => v._id == id);
     $("#getAll").click(() => getValueAll(endpoint.endpoint_action.GET_ALL));
@@ -52,7 +55,7 @@ function setValue(name, id) {
 function getValueAll(endpoint) {
     axios.post(BASE_URL + endpoint, [], options)
         .then(function(response) {
-            console.log(response);
+            console.log("GET VALUE ALL SUCCESS");
             showButtonwithTable();
         });
 
@@ -61,10 +64,11 @@ function getValueAll(endpoint) {
 function getValueByID(endpoint) {
     var number = $("#NumberID").val();
     endpoint = endpoint.replace(":id", number);
-    console.log(endpoint);
+    // console.log(endpoint);
     axios.post(BASE_URL + endpoint, [], options)
         .then(function(response) {
             // console.log(response);
+            console.log("GET VALUE BY ID SUCCESS");
             showButtonwithTable();
         });
 }
@@ -76,6 +80,7 @@ function deleteValueAll(endpoint) {
         }, options)
         .then(function(response) {
             // console.log(response);
+            console.log("DELETE ALL SUCCESS");
             showButtonwithTable();
         });
 }
@@ -87,7 +92,7 @@ function deleteValueByID(endpoint) {
             "deleteForever": "true"
         }, options)
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
             console.log("DELETE BY ID SUCCESS");
             showButtonwithTable();
         });
