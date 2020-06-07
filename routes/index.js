@@ -4,18 +4,22 @@ var axios = require('axios').default;
 
 const connect = require('../helpers/APIHelper');
 const apis = require('../helpers/APIs');
-const signin = require('../helpers/Auth');
-const moment = require('moment');
+const Auth = require('../helpers/Auth');
 
 var bundleStyleAccount = require('../app_config/styleAccount');
 var bundleStyleReset = require('../app_config/styleReset');
-var bundleStyleNewsFeed = require('../app_config/styleNewsFeed');
 var bundleStyleIndex = require("../app_config/styleIndex");
 
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleScriptChat = require('../app_config/adminChat');
 
-
+router.use(function(req, res, next){
+  if (req.signedCookies.token)                                                                                                                                                                                                                                                                                                        {
+    res.locals.is_login = true;
+    res.locals.username = req.signedCookies.v1_pf;
+  }
+  next();
+})
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
@@ -39,7 +43,7 @@ router.get('/register', function(req, res, next) {
     });
 });
 
-router.get('/team', function(req, res, next) {
+router.get('/team' ,function(req, res, next) {
     res.render('home/team', { title: 'My Team' });
 });
 
@@ -95,7 +99,7 @@ router.post('/login', async function (req, res) {
 
         res.cookie('token', data.data_response.token, { signed: true, maxAge:7* 24 * 60 *60 *1000 });        
         res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 });             
-        res.redirect('/admin');
+        res.redirect('/home/newsfeed');
       }
       else {
         res.redirect('/login');
@@ -119,7 +123,6 @@ router.post('/forgotpassword',async (req,res)=>{
 })
 
 
-
 /* GET home page. */
 router.get('/team', function(req, res, next) {
     res.render('home/team', { title: 'Express' });
@@ -133,9 +136,6 @@ router.get('/resetnewpassword',async(req,res)=>{
   res.render('home/resetnewpassword',{title:"Reset Password", layout:'layouts/layoutHome',style:require("../app_config/styleReset")});
 })
 
-router.get('/newsfeed', async (req, res) => {
-  res.render('newsfeed/index', { title: "News Feed" })
-});
 
 router.get('/error',function(req,res,next){
   res.render('error/errorpage',{title:'ErorrPage'});

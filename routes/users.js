@@ -8,6 +8,7 @@ const moment = require('moment');
 
 var bundleScriptProfile = require("../app_config/scriptProfile");
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -17,7 +18,7 @@ router.get('/', function(req, res, next) {
 router.get('/profile',signin,async (req, res) => {
   try {
     let response = await connect(apis.POST_PROFILE, {}, req.token);
-    res.locals = response.data_response;
+    res.locals.data = response.data_response;
     res.locals.BASE_URL = apis.BASE_URL;
     res.locals.URL_IMAGE = apis.URL_IMAGE;
     res.locals.POST_UPLOAD_IMAGE = apis.POST_UPLOAD_IMAGE;

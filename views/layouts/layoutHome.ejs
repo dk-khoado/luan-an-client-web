@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
   <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-   <link rel="stylesheet" href="/assets/css/styles.min.css">
+  <link rel="stylesheet" href="/assets/css/styles.min.css">
   <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css" />
   <link rel="stylesheet" href="/assets/jquery-ui-1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" href="/assets/jquery-ui-1.12.1/jquery-ui.theme.min.css">
@@ -40,24 +40,31 @@
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav mr-auto">
           <li class="nav-item" role="presentation"><a class="nav-link" href="/team">Thành viên</a></li>
-          <li class="nav-item" role="presentation"><a class="nav-link" href="/newsfeed">Bảng Tin</a></li>
-        </ul><span class="navbar-text actions"> <a class="login" href="/login">Log In</a><a
-            class="btn btn-light action-button" role="button" href="/register">Sign Up</a></span>
+          <li class="nav-item" role="presentation"><a class="nav-link" href="/home/newsfeed">Bảng Tin</a></li>
+        </ul>
+  
+        <% if (typeof(is_login) !== 'undefined') { %>
+        <span class="navbar-text actions"> Xin chào, <a href="/user/profile" class="login"> <%= username %> </a> 
+          <a class="btn btn-light action-button" role="button" href="/admin/logout" style="margin-left: 10px;">Log Out</a></span>
+        <% } else { %>
+        <span class="navbar-text actions"> <a class="login" href="/login">Log In</a>
+          <a class="btn btn-light action-button" role="button" href="/register">Sign Up</a></span>
+        <%  } %>
+
       </div>
     </div>
   </nav>
-  <div class="text-dark" style="margin-top: 85px;">
+  <div class="text-dark">
     <%- body %>
   </div>
   <%- script %>
-
   <% if (typeof(scripts) !== 'undefined') { %>
   <% scripts.forEach(element => { %>
   <script src="<%- element %>"></script>
   <% }) %>
   <% } %>
-  <%- script %>
- 
+
+
 </body>
 
 </html>

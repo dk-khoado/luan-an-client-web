@@ -2,9 +2,11 @@
   <!-- Trigger the modal with a button -->
 
   <!-- Modal -->
+  <div class="row custom-row">
   <div id="table_name">
-    <%= table_name %> 
+    <%= table_name %>
   </div>
+</div>
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -128,8 +130,7 @@
                   <div class="body"> {
                     <p name="table_name">"table_name":,</p>
                     <p name="table_fields">"table_fields":[</p>
-                    <p>{<span name="name">"name":</span>,<span
-                        name="dataType">"dataType":%></span>},</p>
+                    <p>{<span name="name">"name":</span>,<span name="dataType">"dataType":%></span>},</p>
                     <p>]
                     </p>
                     }
@@ -152,10 +153,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a onclick="onModalGetAll()" id="copylink"></a>
+      <a id="getAll"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" id="run" data-toggle="modal" data-target="#myModal">Run</button>
+      <button class="btn btn-success btn-sm" type="button" id="run" data-toggle="modal"
+        data-target="#myModal">Run</button>
       <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
@@ -166,10 +168,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a onclick="onModalGetAll()" id="copylink"> </a>
+      <a id="getbyID"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#myModal" id="run">Run</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#myModal"
+        id="run">Run</button>
       <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
@@ -180,11 +183,12 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
+      <a data-toggle="modal" data-target="#detail2" id="insertValue"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy" onclick="copy()">Copylink</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert"
+        id="run">Run</button>
+      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -194,10 +198,11 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
+      <a data-toggle="modal" data-target="#detail2" id="updatebyID"> </a>
     </div>
     <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert" id="run">Run</button>
+      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert"
+        id="run">Run</button>
       <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
@@ -208,7 +213,7 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"> </a>
+      <a data-toggle="modal" data-target="#detail2" id="detelebyID"> </a>
     </div>
     <div class="col-4">
       <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
@@ -222,11 +227,16 @@
   </div>
   <div class="row custom-row" style="border: 1px solid #B7B7B7;">
     <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="copylink"></a>
+      <a data-toggle="modal" data-target="#detail2" id="deletelAll"></a>
     </div>
     <div class="col-4">
       <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
       <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
     </div>
   </div>
-  
+</div>
+<script>
+  var BASE_URL = '<%- BASE_URL %>';
+  var POST_MANANGER_API = '<%- POST_MANANGER_API %>';
+  var token = '<%- token %>';
+</script>

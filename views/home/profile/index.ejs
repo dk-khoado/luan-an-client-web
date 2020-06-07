@@ -20,7 +20,7 @@
                         <label>Fullname</label>
                     </div>
                     <div class="col-lg-6">
-                        <label><%= fullName %> </label>
+                        <label><%= data.fullName %> </label>
                     </div>
                     <div class="col-lg-2 text-left">
                         <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalFullName()">
@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                             <div class="col-lg-6">
-                                <label><%= username %> </label>
+                                <label><%= data.username %> </label>
                             </div>
                         </div>
                         <div class="row">
@@ -59,7 +59,7 @@
                                 <label>Email</label>
                             </div>
                             <div class="col-lg-6">
-                                <label><%= email %> </label>
+                                <label><%= data.email %> </label>
                             </div>
                             <div class="col-lg-3 text-right">
                                 <i class="fas fa-edit"></i>
@@ -82,7 +82,7 @@
                                 <label>Ngày sinh</label>
                             </div>
                             <div class="col-lg-6">
-                                <label><%= birthday %> </label>
+                                <label><%= data.birthday %> </label>
                             </div>
                             <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalbirthday()">
@@ -94,7 +94,7 @@
                                 <label>Giới tính</label>
                             </div>
                             <div class="col-lg-6">
-                                <label><%= gender %> </label>
+                                <label><%= data.gender %> </label>
                             </div>
                             <div class="col-lg-3 text-right">
                                 <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalgender()">
@@ -116,10 +116,10 @@
     var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
     var token = '<%- token %>';
 
-    var imageAvatar = "<%- URL_IMAGE %>" + "<%- image %>";
+    var imageAvatar =  "<%- data.image %>";
     $("#image").attr("src", imageAvatar);
     function openModalFullName() {
-        $.get("/users/profile/editfullName?name=<%- fullName %>", (data) => {
+        $.get("/users/profile/editfullName?name=<%- data.fullName %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
@@ -131,7 +131,7 @@
         });
     }
     function openModalgender(){
-        $.get("/users/profile/editgender?name=<%- gender %>",(data)=>{
+        $.get("/users/profile/editgender?name=<%- data.gender %>",(data)=>{
             $("#result").html(data);
 
             $("#editmodel").modal();
@@ -142,7 +142,7 @@
         })
     }
     function openModalpassword(){
-        $.get("/users/profile/editpassword?name=<%- password %>",(data)=>{
+        $.get("/users/profile/editpassword?name=<%- data.password %>",(data)=>{
             $('#result').html(data);
 
             $("#editmodel").modal();
@@ -153,7 +153,7 @@
         });
     }
     function openModalbirthday(){
-        $.get("/users/profile/editbirthday?value=<%- birthday %>",(data)=>{
+        $.get("/users/profile/editbirthday?value=<%- data.birthday %>",(data)=>{
             $("#result").html(data);
 
             $("#editmodel").modal();

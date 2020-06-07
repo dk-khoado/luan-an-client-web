@@ -3,7 +3,7 @@ function ItemAPICompoment(name, endpoint) {
     <td onclick="setValue('${name}', '${endpoint}')" style="cursor: pointer;">${name}</td>
     <td>  #  </td>
     <td>
-        <a class="btn btn-success btn-sm" href="/manager/detailapi">View</a>
+        <a class="btn btn-success btn-sm" href="/manager/api/detail/${name}">View</a>
         <button class="btn btn-primary btn-sm">Edit</button>
         <button class="btn btn-secondary btn-sm" data-toggle="modal"
             data-target="#delete">Delete</button>
@@ -14,12 +14,12 @@ options = {
     headers: { Authorization: "Bearer " + token }
 };
 var data = [];
-axios.post(BASE_URL + POST_MANANER_API, data, options)
+axios.post(BASE_URL + POST_MANANGER_API, data, options)
     .then(function(response) {
         data = response.data.data_response;
         data.forEach(element => {
             $('#apiList').append(ItemAPICompoment(element.table_name, element._id));
-            // console.log(element);    
+            console.log(data);
         });
     })
     .catch(function(error) {

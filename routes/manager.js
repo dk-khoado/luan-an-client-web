@@ -11,6 +11,9 @@ var bundleScriptCreateAPI = require('../app_config/scriptCreateAPI');
 var bundleStyleManagerAPI = require('../app_config/styleManagerAPI');
 var bundleScriptManagerAPI = require('../app_config/scriptManagerAPI');
 
+var bundleStyleDetailAPI = require('../app_config/styleDetailAPI');
+var bundleScriptDetailsPI = require('../app_config/scriptDetailAPI');
+
 router.get('/createapi', Auth, function (req, res, next) {
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_CREATE_API = apis.POST_CREATE_API;
@@ -24,7 +27,7 @@ router.get('/createapi', Auth, function (req, res, next) {
 
 router.get('/api', Auth, function (req, res, next) {
   res.locals.BASE_URL = apis.BASE_URL;
-  res.locals.POST_MANANER_API = apis.POST_MANANER_API;
+  res.locals.POST_MANANGER_API = apis.POST_MANANGER_API;
   res.locals.token = req.token;
   res.render('manager/managerapi', { 
     title: 'Manager API',
@@ -33,12 +36,17 @@ router.get('/api', Auth, function (req, res, next) {
   });
 });
 
-router.get('/api/detail/:tablename',Auth,async(req,res)=>{
+router.get('/api/detail/:tablename',Auth,function(req,res,next) {
   res.locals.BASE_URL = apis.BASE_URL;
-  res.locals.POST_API = apis.POST_API;
+  res.locals.POST_MANANGER_API = apis.POST_MANANGER_API;
   res.locals.token = req.token;
   res.locals.table_name = req.params.tablename;
-  res.render('manager/detail', { style: require('../app_config/detail') });
+  res.render('manager/detail', 
+  {
+    title : 'Detail API',
+    style: bundleStyleDetailAPI,
+    scripts: bundleScriptDetailsPI
+  });
 });
 
 
