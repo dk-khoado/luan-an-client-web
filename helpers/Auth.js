@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
             if (response.is_success) {
                 res.locals.data = response.data_response.username;
                 res.cookie("v1_pf", response.data_response.username, { signed: true, maxAge: 86400 });
-                res.locals.is_login = true;
+                res.locals.is_login = true;        
                 next();
             } else {
                 res.clearCookie("token")
@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             }
         } else {
             res.locals.username = req.signedCookies.v1_pf;
-            res.locals.is_login = true;
+            res.locals.is_login = true;        
             next();
         }
     } else {

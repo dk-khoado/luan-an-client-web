@@ -2,16 +2,15 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 ">
             <div class="profile-img">
-                <label for="file-input"><img
-                        src=""
-                        id="image" style="cursor: pointer;"></label>
+                <label for="file-input">
+                    <img src="" id="image" style="cursor: pointer; object-fit: cover;" width="200px" height="200px" onerror="this.src = '/images/default_image.png'"></label>
 
                 <input type="file" id="file-input" class="files" />
-                <div class="progress" >
-                    <div class="progress-bar" role="progressbar"id="progress" aria-valuenow="25"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress d-none" id="progress-parrent">
+                    <div class="progress-bar " role="progressbar" id="progress" aria-valuenow="25" aria-valuemin="0"
+                        aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="title">
@@ -73,7 +72,8 @@
                                 <label>*********</label>
                             </div>
                             <div class="col-lg-3 text-right">
-                                <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalpassword()">
+                                <button type="button" class="btn btn-primary p-custom-pf-0"
+                                    onclick="openModalpassword()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
@@ -85,7 +85,8 @@
                                 <label><%= data.birthday %> </label>
                             </div>
                             <div class="col-lg-3 text-right">
-                                <button type="button" class="btn btn-primary p-custom-pf-0" onclick="openModalbirthday()">
+                                <button type="button" class="btn btn-primary p-custom-pf-0"
+                                    onclick="openModalbirthday()">
                                     <i class="fa fa-edit"></i></button>
                             </div>
                         </div>
@@ -112,14 +113,14 @@
 </div>
 
 <script>
-     var BASE_URL = '<%- BASE_URL %>';
+    var BASE_URL = '<%- BASE_URL %>';
     var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
     var token = '<%- token %>';
 
-    var imageAvatar =  "<%- data.image %>";
+    var imageAvatar = "<%- data.image %>";
     $("#image").attr("src", imageAvatar);
     function openModalFullName() {
-        $.get("/users/profile/editfullName?name=<%- data.fullName %>", (data) => {
+        $.get("/user/profile/editfullName?name=<%- data.fullName %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
@@ -130,34 +131,34 @@
             });
         });
     }
-    function openModalgender(){
-        $.get("/users/profile/editgender?name=<%- data.gender %>",(data)=>{
+    function openModalgender() {
+        $.get("/user/profile/editgender?name=<%- data.gender %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
-            $('#closemodal').click(function(){
+            $('#closemodal').click(function () {
                 $('#editmodel').modal("hide");
                 $("#result").html();
             });
         })
     }
-    function openModalpassword(){
-        $.get("/users/profile/editpassword?name=<%- data.password %>",(data)=>{
+    function openModalpassword() {
+        $.get("/user/profile/editpassword?name=<%- data.password %>", (data) => {
             $('#result').html(data);
 
             $("#editmodel").modal();
-            $('#closemodal').click(function(){
+            $('#closemodal').click(function () {
                 $('#editmodel').modal("hide");
                 $("#result").html();
             });
         });
     }
-    function openModalbirthday(){
-        $.get("/users/profile/editbirthday?value=<%- data.birthday %>",(data)=>{
+    function openModalbirthday() {
+        $.get("/user/profile/editbirthday?value=<%- data.birthday %>", (data) => {
             $("#result").html(data);
 
             $("#editmodel").modal();
-            $('#closemodal').click(function(){
+            $('#closemodal').click(function () {
                 $('#editmodel').modal("hide");
                 $("#result").html();
             });

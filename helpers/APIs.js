@@ -12,7 +12,7 @@ module.exports = {
     POST_CREATE_API: "/api/v1/create/api",
     POST_API:"/api/v1/getAllAPIByID",
     POST_FORGOT:"/api/account/forgotpassword",
-    POST_UPLOAD_IMAGE: "/api/account/updateImageProfile",
+    POST_UPLOAD_IMAGE: "/api/upload/uploadAvatar",
     URL_IMAGE: "https://api-server-game.herokuapp.com/images/",
     POST_MANANGER_API: "/api/v1/getAllApiById"
 }
