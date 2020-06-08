@@ -31,7 +31,7 @@ router.get('/post/new', async(req, res) => {
 })
 
 router.post('/post/new', async(req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     res.render('admin/post/post', { layout: 'layouts/_layout', scripts: require("../app_config/adminPost"), });
 })
 

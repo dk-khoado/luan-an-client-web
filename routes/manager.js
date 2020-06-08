@@ -49,6 +49,5 @@ router.get('/api/detail/:tablename',Auth,function(req,res,next) {
   });
 });
 
-
 //[end]
 module.exports = router;
