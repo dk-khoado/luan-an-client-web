@@ -4,8 +4,8 @@ function ItemAPICompoment(name, endpoint) {
     <td>  #  </td>
     <td>
         <a class="btn btn-success btn-sm" href="/manager/api/detail/${name}">View</a>
-        <button class="btn btn-primary btn-sm">Edit</button>
-        <button class="btn btn-secondary btn-sm" data-toggle="modal"
+        <button class="btn btn-info btn-sm">Edit</button>
+        <button class="btn btn-danger btn-sm" data-toggle="modal"
             data-target="#delete">Delete</button>
     </td>
 </tr>`
@@ -62,9 +62,8 @@ function getValueAll(endpoint) {
 }
 
 function getValueByID(endpoint) {
-    var number = $("#NumberID").val();
-    endpoint = endpoint.replace(":id", number);
-    // console.log(endpoint);
+        var number = $("#NumberID").val();
+        endpoint = endpoint.replace(":id", number);
     axios.post(BASE_URL + endpoint, [], options)
         .then(function(response) {
             // console.log(response);

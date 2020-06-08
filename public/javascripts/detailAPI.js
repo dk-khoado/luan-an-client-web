@@ -17,7 +17,8 @@ $(document).ready(function () {
             $("#deletelAll").text(DELETE);
 
             //Lấy response từ endpoint_action
-            $("#Run_GetAll").click(() => getValueAll(endpoint.endpoint_action.GET_ALL));
+            $("#Run_GetAll").click(() => getValueAll(GET_ALL));
+            $("#Run_GetbyID").click(() => getValuebyID(GET_BY_ID));
         })
         .catch(function (error) {
             console.log(error);
@@ -27,9 +28,18 @@ $(document).ready(function () {
 function getValueAll(endpoint) {
     axios.post(BASE_URL + endpoint, [], options)
         .then(function(response) {
-            console.log("GET VALUE ALL SUCCESS");
-            showButtonwithTable();
+            var data = response.data;
+            $("#getReponseGetAll").text(JSON.stringify(data));
         });
-
 }
 
+function getValuebyID(endpoint) {
+    var number = 0;
+    endpoint = endpoint.replace(":id", number);
+    axios.post(BASE_URL + endpoint, [], options)
+        .then(function(response) {
+            console.log(response);
+            var data = response.data;
+            $("#getReponseGetbyID").text(JSON.stringify(data));
+        });
+}
