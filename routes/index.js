@@ -152,6 +152,11 @@ router.get('/tutorial',function(req,res,next){
 router.get('/tutorial/tieudebaihuongdan',function(req,res,next){
   res.render('tutorial/tutorial',{style:require('../app_config/styletutorial')});
 })
+// ping live server
+router.get('/ping/:urlPing',async function(req, res, next) {
 
+  await axios.get("https://api-server-game.herokuapp.com/");
+  res.send("hello !");
+});
 
 module.exports = router;

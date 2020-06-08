@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
-var tempdata = require('tempdata');
+// var tempdata = require('tempdata');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,30 +34,30 @@ app.use(session({
   resave: true,
   saveUninitialized: false
 }));
-app.use(tempdata);
+// app.use(tempdata);
 
 //message system
-app.use((req, res, next) => {
-  res.message = {
-    error: function (message = null) {
-      req.tempData.set("error", message);
-      res.locals.msgError = message;
-    },
-    warning: function (message = null) {
-      req.tempData.set("warning", message);
-      res.locals.msgWarning = message;
-    },
-    success: function (message = null) {
-      req.tempData.set("success", message);
-      res.locals.msgSuccess = message;
-    },
-    info: function (message = null) {
-      req.tempData.set("info", message);
-      res.locals.msgInfo = message;
-    }
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   res.message = {
+//     error: function (message = null) {
+//       req.tempData.set("error", message);
+//       res.locals.msgError = message;
+//     },
+//     warning: function (message = null) {
+//       req.tempData.set("warning", message);
+//       res.locals.msgWarning = message;
+//     },
+//     success: function (message = null) {
+//       req.tempData.set("success", message);
+//       res.locals.msgSuccess = message;
+//     },
+//     info: function (message = null) {
+//       req.tempData.set("info", message);
+//       res.locals.msgInfo = message;
+//     }
+//   }
+//   next();
+// });
 
 app.use('/', indexRouter);
 app.use('/home',mainRouter);
