@@ -25,7 +25,7 @@
 
 .form__group {
   position: relative;
-  width: 50%;
+  width: 100%;
 }
 
 .form__field {
@@ -34,14 +34,27 @@
   border: 0;
   border-bottom: 2px solid #9b9b9b;
   outline: 0;
-  font-size: 28px;
+  font-size: 1.3rem;
   color: black;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 }
 
-.form__field:focus {
+
+input.form__field:focus {
+  padding-bottom: 6px;  
   font-weight: 700;
   border-width: 3px;
+  border-image: linear-gradient(to right, #11998e,#38ef7d);
   border-image-slice: 1;
 }
 
-
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}

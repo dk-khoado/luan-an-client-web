@@ -6,7 +6,7 @@ var NameOfFiledCompoment = (index) => {
             aria-describedby="basic-addon1" id="namefiled" required oninput="validateMatch(${index})" required autocomplete="off">
     </div>
     <div class="col-lg-4 text-right">
-        <select class="browser-default custom-select" name="dataType">
+        <select class="custom-select" name="dataType">
         <option value="Int">Int</option>
         <option value="String">String</option>
         <option value="Boolean">Boolean</option>
