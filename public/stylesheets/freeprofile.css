@@ -1,12 +1,12 @@
 .profile-img img
 {
-    width:100px;
-    height:100px;
+    width:200px;
+    height:200px;
     border-radius: 50%;
-    border:2px solid lightgray;
+    border:2px solid lightgray;    
 }
 .profile-img{
-    padding: 20px;
+    padding: 20px;   
 }
 .title {
     margin-left: 30px;

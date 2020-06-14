@@ -42,7 +42,7 @@ router.get('/profile/editfullName',async (req, res) =>{
 
 router.post('/profile/editfullName',signin,async(req,res)=>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/users/profile");
+  res.redirect("/user/profile");
 });
 
 router.get('/profile/editpassword',async (req,res)=>{
@@ -51,7 +51,7 @@ router.get('/profile/editpassword',async (req,res)=>{
 
 router.post('/profile/editpassword',signin,async(req,res)=>{
   await connect(apis.POST_CHANGE_PASSWORD,req.body,req.token);
-  res.redirect("/users/profile");
+  res.redirect("/user/profile");
 })
 
 router.get('/profile/editgender',async (req,res) =>{
@@ -60,7 +60,7 @@ router.get('/profile/editgender',async (req,res) =>{
 
 router.post('/profile/editgender',signin,async(req,res)=>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/users/profile");
+  res.redirect("/user/profile");
 });
 
 router.get('/profile/editbirthday', async (req,res)=>{
@@ -70,7 +70,7 @@ router.get('/profile/editbirthday', async (req,res)=>{
 
 router.post('/profile/editbirthday',signin,async(req,res) =>{
   await connect(apis.POST_UPDATE_PROFILE,req.body,req.token);
-  res.redirect("/users/profile");
+  res.redirect("/user/profile");
 });
 
 module.exports = router;

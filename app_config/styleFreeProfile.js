@@ -1,4 +1,4 @@
 module.exports = [
-    '/freeprofile.css',
+    // '/freeprofile.css',
     '/javascripts/upload_image_user.js'
 ]
