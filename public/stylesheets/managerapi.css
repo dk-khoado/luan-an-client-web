@@ -14,3 +14,14 @@
 .custom-mt-50{
     margin-top: 50;
 }
+
+.box-content{
+    position: absolute;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: .35rem;
+    height: 170px;
+    width: 388px;
+}   

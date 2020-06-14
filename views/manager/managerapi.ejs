@@ -1,6 +1,6 @@
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-7">
+    <div class="row justify-content-between">
+        <div class="col-lg-6">
             <div class="row">
                 <div class="col-12">
                     <a href="/manager/createapi" role="button" class="btn btn-primary">Create</a>
@@ -122,15 +122,17 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">OK</button>
+                                <button type="button" class="btn btn-primary" id="ConfirmDelete">OK</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 mx-4">
-                    <textarea name="" id="" cols="50" rows="7" disabled></textarea>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-10">
+                    <div class="box-content">
+                        <pre id="getReponse" style="height:170px"></pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -140,4 +142,5 @@
     var BASE_URL = '<%- BASE_URL %>';
     var POST_MANANGER_API = '<%- POST_MANANGER_API %>';
     var token = '<%- token %>';
+    var POST_DELETE_API = '<%- POST_DELETE_API %>'
 </script>

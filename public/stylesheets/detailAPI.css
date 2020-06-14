@@ -22,21 +22,15 @@
     padding-left: 0px;
     padding-right: 0px;
   }
-  .col-4{
-    padding-left: 70px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .run{
+  .btn-run{
     border-radius: 16px;
     width: 100px;
     background-color: #00FF5D;
 
   }
-  #copy{
-    border-radius: 16px;
+  .btn-copylink{
+    border-radius: 20px;
     width: 100px;
-    background-color: #DFDFDF;
     
   }
   .custome-row{
@@ -48,12 +42,14 @@
     margin-top: 10px;
   }
   .getall{
-    background-color:#00C853;
+    background-color: #00C853;
     color: white;
     font-size: 18px;
     text-align: center;
     width: 10rem;
     margin-top: 20px;
+    box-shadow: 5px 5px 5px #D7D7D7;
+    padding: 10px;
   }
   .getbyid{
     background-color: #00C853;
@@ -62,6 +58,8 @@
     text-align: center;
     margin-top: 20px;
     width: 10rem;
+    box-shadow: 5px 5px 5px #D7D7D7;
+    padding: 10px;
   }
   .insert{
     background-color: #00B8D4;
@@ -70,6 +68,8 @@
     margin-top: 20px;
     text-align: center;
     width: 10rem;
+    box-shadow: 5px 5px 5px #D7D7D7;
+    padding: 10px;
   }
   .update{
     background-color: #00C853;
@@ -78,6 +78,8 @@
     margin-top: 20px;
     text-align: center;
     width: 10rem;
+    box-shadow: 5px 5px 5px #D7D7D7;
+    padding: 10px;
   }
   .delete{
     background-color: #E53935;
@@ -86,4 +88,31 @@
     font-size: 18px;
     text-align: center;
     width: 10rem;
+    box-shadow: 5px 5px 5px #D7D7D7;
+    padding: 10px;
+  }
+  .content-col{
+    line-height: 40px;
+  }
+
+  .button-function{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .button-function .btn {
+    margin-right: 10px;
+  }
+  .border-detail{
+    border: 1px solid #B7B7B7;
+    padding: 10px;
+  }
+  .table-name{
+    padding: 15px 25px;
+    transition: box-shadow .6s;
+  }
+  .table-name:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+    padding: 15px 25px;
   }

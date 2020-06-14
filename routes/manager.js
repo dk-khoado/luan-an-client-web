@@ -29,6 +29,7 @@ router.get('/api', Auth, function (req, res, next) {
   res.locals.BASE_URL = apis.BASE_URL;
   res.locals.POST_MANANGER_API = apis.POST_MANANGER_API;
   res.locals.token = req.token;
+  res.locals.POST_DELETE_API = apis.POST_DELETE_API;
   res.render('manager/managerapi', { 
     title: 'Manager API',
     style: bundleStyleManagerAPI,
@@ -38,7 +39,7 @@ router.get('/api', Auth, function (req, res, next) {
 
 router.get('/api/detail/:tablename',Auth,function(req,res,next) {
   res.locals.BASE_URL = apis.BASE_URL;
-  res.locals.POST_MANANGER_API = apis.POST_MANANGER_API;
+  res.locals.POST_DETAIL_API = apis.POST_DETAIL_API;
   res.locals.token = req.token;
   res.locals.table_name = req.params.tablename;
   res.render('manager/detail', 

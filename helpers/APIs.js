@@ -14,5 +14,7 @@ module.exports = {
     POST_FORGOT:"/api/account/forgotpassword",
     POST_UPLOAD_IMAGE: "/api/account/updateImageProfile",
     URL_IMAGE: "https://api-server-game.herokuapp.com/images/",
-    POST_MANANGER_API: "/api/v1/getAllApiById"
+    POST_MANANGER_API: "/api/v1/getAllApiById",
+    POST_DETAIL_API: "/api/v1/getAPIbyID",
+    POST_DELETE_API: "/api/v1/deleteAPI"
 }

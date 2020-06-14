@@ -1,130 +1,24 @@
 <div class="container custom-px">
   <!-- Trigger the modal with a button -->
-
-  <!-- Modal -->
   <div class="row custom-row">
-  <div id="table_name">
-    <%= table_name %>
+  <div id="table_name" class="table-name">
   </div>
 </div>
+  <!-- Modal -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="insert" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Response</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row row-style">
-              <div class="col-4">
-                <label>Name of field</label>
-              </div>
-              <div class="col-8">
-                <input type="text" class="form-control" placeholder="Field of api">
-              </div>
-            </div>
-            <div class="row row-style">
-              <div class="col-4">
-                <label>Name of field</label>
-              </div>
-              <div class="col-8">
-                <input type="text" class="form-control" placeholder="Field of api">
-              </div>
-            </div>
-            <div class="row row-style">
-              <div class="col-4">
-                <label>Name of field</label>
-              </div>
-              <div class="col-8">
-                <input type="text" class="form-control" placeholder="Field of api">
-              </div>
-            </div>
-            <div class="row row-style">
-              <div class="col-4">
-                <label>Name of field</label>
-              </div>
-              <div class="col-8">
-                <input type="text" class="form-control" placeholder="Field of api">
-              </div>
-            </div>
-            <div class="row row-style">
-              <div class="col-12 text-right">
-                <button class="btn btn-primary">OK</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="detail2" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Response</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-6 text-center">
-              <p>Response</p>
-            </div>
-            <div class="col-6 text-center">
-              <p>Request</p>
-            </div>
-            <div class="container col-12">
-              <div class="row justify-content-between poperty">
-                <div class="col-5" style="border: 1px solid #D2D2D2;">
-                  <div class="body" name="body"> {
-                    <p name="errors">"Error": ,</p>
-                    <p name="is_success">"is_success":,</p>
-                    <p name="status_code">"status_code": ,</p>
-                    <p>"data_response":[],</p>
-                    <p name="message">"message":</p>
-                    }
-                  </div>
-                  <div class="col-1"></div>
-                </div>
-                <div class="col-6" style="border: 1px solid #d2d2d2;">
-                  <div class="body"> {
-                    <p name="table_name">"table_name":,</p>
-                    <p name="table_fields">"table_fields":[</p>
-                    <p>{<span name="name">"name":</span>,<span name="dataType">"dataType":%></span>},</p>
-                    <p>]
-                    </p>
-                    }
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="row custom-row">
     <div class="col-12 custom-col">
-      <p class="getall">GetAll</p>
+      <p class="getall">Get All</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
-      <a id="getAll"> </a>
+  <div class="row custom-row border-detail">
+    <div class="col-8 content-col">
+      <a data-toggle="modal" data-target="#demoGetAll" id="getAll"> </a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm run" type="button" data-toggle="modal"
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" data-toggle="modal"
         data-target="#myModal" id="Run_GetAll">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -132,14 +26,14 @@
       <p class="getbyid">Get By ID</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
-      <a id="getbyID"> </a>
+  <div class="row custom-row border-detail">
+    <div class="col-8 content-col">
+      <a  data-toggle="modal" data-target="#demoGetByID" id="getbyID"> </a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm run" type="button" data-toggle="modal" 
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" data-toggle="modal" 
       data-target="#ModalgetByID" id="Run_GetbyID">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -147,14 +41,14 @@
       <p class="insert">Insert</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="insertValue"> </a>
+  <div class="row custom-row border-detail">
+    <div class="col-8 content-col">
+      <a data-toggle="modal" data-target="#demoInsert" id="insertValue"> </a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert"
-        id="run">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" data-toggle="modal" data-target="#insert"
+        id="Run_InsertValue">Run</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row px-0">
@@ -162,14 +56,14 @@
       <p class="update">Update By ID</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
+  <div class="row custom-row border-detail">
+    <div class="col-8 content-col">
       <a data-toggle="modal" data-target="#detail2" id="updatebyID"> </a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#insert"
-        id="run">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" data-toggle="modal" data-target="#getUpdatebyID"
+        id="Run_UpdatebyID">Run</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button" id="copy">Copylink</button>
     </div>
   </div>
   <div class="row custom-row">
@@ -177,34 +71,44 @@
       <p class="delete">Delete By ID</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
+  <div class="row custom-row border-detail" >
+    <div class="col-8 content-col">
       <a data-toggle="modal" data-target="#detail2" id="detelebyID"> </a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" data-toggle="modal" data-target="#detailDeletebyID" id="run">Run</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button" id="copy">Copylink</button>
     </div>
   </div>
-  <div class="row custom-row">
+  <div class="row custom-row ">
     <div class="col-12 custom-col">
       <p class="delete">Delete All</p>
     </div>
   </div>
-  <div class="row custom-row" style="border: 1px solid #B7B7B7;">
-    <div class="col-8">
-      <a data-toggle="modal" data-target="#detail2" id="deletelAll"></a>
+  <div class="row custom-row border-detail mb-4">
+    <div class="col-8 content-col">
+      <a data-toggle="modal" data-target="#detailDeleteAll" id="deletelAll"></a>
     </div>
-    <div class="col-4">
-      <button class="btn btn-success btn-sm" type="button" id="run">Run</button>
-      <button class="btn btn-outline btn-sm" type="button" id="copy">Copylink</button>
+    <div class="col-4 button-function">
+      <button class="btn btn-success btn-sm btn-run" type="button" id="Run_DeleteAll" data-toggle="modal" data-target="#detailDeleteAll">Run</button>
+      <button class="btn btn-secondary btn-sm btn-copylink" type="button" id="copy">Copylink</button>
     </div>
   </div>
 </div>
 <%- include('../components/_modalgetAll', {}); %>
 <%- include('../components/_modalgetbyID', {}); %>
+<%- include('../components/_modalInsertValue', {}); %>
+<%- include('../components/_modalDeleteAll', {}); %>
+<%- include('../components/_modalDeletebyID', {}); %>
+<%- include('../components/_modalUpdatebyID', {}); %>
+
+<!-- Modal Demo  -->
+<%- include('../componentsDemo/_modalGetAllDemo', {}); %>
+<%- include('../componentsDemo/_modalGetbyIDemo', {}); %>
+<%- include('../componentsDemo/_modalnsertDemo', {}); %>
 <script>
   var BASE_URL = '<%- BASE_URL %>';
-  var POST_MANANGER_API = '<%- POST_MANANGER_API %>';
+  var POST_DETAIL_API = '<%- POST_DETAIL_API %>';
   var token = '<%- token %>'; 
+  var table_name = '<%- table_name %>'; 
 </script>

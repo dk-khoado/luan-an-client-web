@@ -1,27 +1,30 @@
-<div class="modal fade" id="ModalGetByID" role="dialog">
+<div class="modal fade" id="ModalGetByID" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Response</h4>
+          <h4 class="modal-title">Get By ID</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <div class="col-12 pl-0">
-            <input class="form-control w-25 mb-4 " type="text" name="">
+          <div class="row m-0">
+            <div class="col-4 pl-0">
+              <input class="form-control mb-4" type="text" name="" id="NumberID" placeholder="Điền ID vào">
+            </div>
+            <div class="col-8 text-left">
+              <button type="button" class="btn btn-primary" id="form-getbyID-run">Get ID</button>
+            </div>
           </div>
-          <div class="card" style="width: 25rem">
-              <div class="card-body">
-                <div class="row justify-content-between poperty">
-                  <div class="col-12">
-                    <div class="body" id="getReponseGetbyID">
-                    </div>
-                  </div>
-                </div>
-              </div>
+          
+          <div class="card">
+            <div class="card-body">
+              <pre id="getReponseGetbyID">
+              </pre>
+            </div>                
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         
         </div>
       </div>
     </div>
