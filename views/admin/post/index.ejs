@@ -117,4 +117,11 @@
         }
 
     }
+
+    $('#searchPost').keypress(function (event) {
+        if (event.keyCode == 13 || event.which == 13) {
+            event.preventDefault();  //Không cho submit from bạn có thể bỏ nều k cần
+            getData();    
+        }
+    });
 </script>
