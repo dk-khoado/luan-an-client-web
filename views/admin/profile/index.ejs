@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="image-upload">
                         <label for="file-input">
-                            <img src=""
+                            <img src="<%= getdata.image %>"
                                 id="image" style="cursor: pointer">
                         </label>
 
@@ -196,7 +196,7 @@
     var BASE_URL = '<%- BASE_URL %>';
     var POST_UPLOAD_IMAGE = '<%- POST_UPLOAD_IMAGE %>';
     var token = '<%- token %>';
-    var imageAvatar = "<%- URL_IMAGE %>" + "<%- getdata.image %>";
+    var imageAvatar = "<%- getdata.image %>";
     $("#image").attr("src", imageAvatar);
 
     function openModalFullName() {

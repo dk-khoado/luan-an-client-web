@@ -1,20 +1,120 @@
 <div>
     <a name="" id="" class="btn btn-primary" href="/admin/post/new" role="button">Tạo Bài Viết Mới</a>
+    <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group"><input id="searchPost" class="bg-dark form-control border-0 small"
+                style="color: aliceblue;" type="text" placeholder="Search for ...">
+            <div class="input-group-append"><button onclick="getData()" class="btn btn-primary py-0" type="button"><svg
+                        class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas"
+                        data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                        data-fa-i2svg="">
+                        <path fill="currentColor"
+                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                        </path>
+                    </svg><!-- <i class="fas fa-search"></i> --></button></div>
+        </div>
+    </form>
 </div>
 <hr>
+<div id="contentList">
+    <% dataPost.forEach(function(data){ %>
+    <div id="<%- data._id %>" class="card text-left">
+        <div id="divUser">
+            <% if (data.user_id.image != null) { %>
+            <img src="<%- data.user_id.image %>" id="thumnail" alt="">
+            <% } else { %>
+            <img src="/images/default_image.png" id="thumnail" alt="">
+            <% } %>
+            <H4 id="nameUser"><strong><%- data.user_id.fullName  %></strong></H4>
+        </div>
 
-<div class="card text-left">
-    <img class="card-img-top" width="50px" height="50px" src="holder.js/100px180/" alt="sada">
-    <div class="card-body">
-        <h4 class="card-title">Title</h4>
-        <p class="card-text">Body</p>
+        <div class="card-body" style="margin-left: 50px;">
+            <h4 id="<%- data._id %>title" class="card-title"><strong><%- data.title_post %></strong></h4>
+            <h5 id="<%- data._id %>description" class="card-text"><%- data.summary_post %></h5>
+        </div>
+        <div id="image_post">
+            <% if (data.image_post != null) { %>
+            <img class="card-img-top" width="50px" height="330px" src="<%- data.image_post %>" alt="sada">
+            <% } %>
+        </div>
+        <div class="card-footer">
+            <a id="<%- data._id %>" class="btn btn-primary" href="/admin/post/edit/<%- data._id %>" role="button">
+                <i class="fa fa-edit" style="color: aliceblue;"></i>
+            </a>
+            <a id="<%- data._id %>" class="btn btn-danger" onclick="openModalDelete(this.id)" role="button">
+                <i class="fa fa-trash-alt" style="color: aliceblue;"></i>
+            </a>
+        </div>
     </div>
-    <div class="card-footer">
-        <a name="" id="" class="btn btn-primary" href="#" role="button">
-            <i class="fa  fa-edit"></i>
-        </a>
-        <a name="" id="" class="btn btn-danger" href="#" role="button">
-            <i class="fa  fa-trash-alt"></i>
-        </a>
-    </div>
+    <br>
+    <% }); %>
 </div>
+
+<div id="result">
+</div>
+
+<script type="text/javascript">
+    var BASE_URL = '<%- BASE_URL %>';
+    var POST_DELETE_POST = '<%- POST_DELETE_POST %>';
+    var POST_SEARCH_POST = '<%- POST_SEARCH_POST %>';
+    var token = '<%- token %>';
+
+
+    async function deletePost(id) {
+        options = {
+            headers:
+                { Authorization: "Bearer " + token }
+        };
+        var result = await axios.post(BASE_URL + POST_DELETE_POST, { postID: id }, options);
+        if (result.data.is_success) {
+            $('#deletePost').modal("hide");
+            $("#result").html();
+            $('#' + id).remove();
+        } else {
+            alert(result.data.message);
+        }
+    }
+
+    function openModalDelete(id) {
+        $.get(`/admin/post/delete/${id}`, (data) => {
+            $("#result").html(data);
+
+            $("#deletePost").modal();
+
+            $('#closemodal').click(function () {
+                $('#deletePost').modal("hide");
+                $("#result").html();
+
+            });
+        })
+    }
+
+    async function getData() {
+        var search = $("#searchPost").val();
+        options = {
+            headers:
+                { Authorization: "Bearer " + token }
+        };
+        var result = await axios.post(BASE_URL + POST_SEARCH_POST + search, {}, options);
+        if (result.data.is_success) {
+            console.log(result);
+            $('#contentList').html("");
+            var i = 0;
+            result.data.data_response.forEach(function (result) {
+                if (result.image_post == null) {
+                    $('#contentList').append("<div id ='" + result._id + "' class='card text-left'> <div id='divUser'><img src='" + result.user_id.image + "' id='thumnail' class='thumnail" + result._id + "'><H4 id='nameUser'><strong>" + result.user_id.fullName + "</strong></H4></div> <div class='card-body' style='margin-left: 50px;'> <h4 class='card-title'><strong>" + result.title_post + "</strong></h4> <h5 class='card-text'>" + result.summary_post + "</h5> </div> <div id='image_post'> </div> <div class='card-footer'> <a id='" + result._id + "' class='btn btn-primary' href='/admin/post/edit/" + result._id + "' role='button'> <i class='fa fa-edit' style='color: aliceblue;'></i> </a> <a id='" + result._id + "' class='btn btn-danger' onclick='openModalDelete(this.id)' role='button'> <i class='fa fa-trash-alt' style='color: aliceblue;'></i> </a> </div> </div> <br>");
+                    if (result.user_id.image == null) {
+                        $('.thumnail' + result._id).prop('src', '/images/default_image.png');
+                    }
+                } else {
+                    $('#contentList').append("<div id ='" + result._id + "' class='card text-left'> <div id='divUser'><img src='" + result.user_id.image + "' id='thumnail' class='thumnail" + result._id + "'><H4 id='nameUser'><strong>" + result.user_id.fullName + "</strong></H4></div> <div class='card-body' style='margin-left: 50px;'> <h4 class='card-title'><strong>" + result.title_post + "</strong></h4> <h5 class='card-text'>" + result.summary_post + "</h5> </div> <div id='image_post'> <img class='card-img-top' width='50px' height='330px' src='" + result.image_post + "' alt='sada'> </div> <div class='card-footer'> <a id='" + result._id + "' class='btn btn-primary' href='/admin/post/edit/" + result._id + "' role='button'> <i class='fa fa-edit' style='color: aliceblue;'></i> </a> <a id='" + result._id + "' class='btn btn-danger' onclick='openModalDelete(this.id)' role='button'> <i class='fa fa-trash-alt' style='color: aliceblue;'></i> </a> </div> </div> <br>");
+                    if (result.user_id.image == null) {
+                        $('.thumnail' + result._id).prop('src', '/images/default_image.png');
+                    }
+                }
+
+            });
+
+        }
+
+    }
+</script>

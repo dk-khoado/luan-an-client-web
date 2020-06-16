@@ -1,43 +1,88 @@
-<form action="#" method="post">
-    <div class="row form-group">
-        <div class="col-4">
-            <div class="image-upload">
-                <label for="file-input">
-                    <img src="/images/default_image.png" width="110px" />
-                </label>
-
-                <input id="file-input" type="file" />
+<div class="row form-group">
+    <div class="col-12">
+        <div class="row form-group">
+            <div class="col-12">
+                <input required placeholder="Nhập tiêu đề..." class="form-control" type="text" name="title" id="title">
             </div>
         </div>
-        <div class="col-8">
-            <div class="row form-group">
-                <div class="col-12">
-                    <input required placeholder="nhập tiếu đề..." class="form-control" type="text" name="post_title"
-                        id="post_title">
-                </div>
-            </div>
-            <!-- <div class="col-lg-4 text-dark"><label for="post_title">Tiêu Đề</label></div> -->
-            <div class="row form-group">
-                <div class="col-12">
-                    <textarea required placeholder="nhập tóm tắt nội dung..." class="form-control" type=""
-                        name="post_discription" id="post_discription"></textarea>
-                </div>
+        <!-- <div class="col-lg-4 text-dark"><label for="post_title">Tiêu Đề</label></div> -->
+        <div class="row form-group">
+            <div class="col-12">
+                <textarea required placeholder="Nhập tóm tắt nội dung..." class="form-control" type="" name="summary"
+                    id="summary"></textarea>
             </div>
         </div>
     </div>
+</div>
 
-
-
-    <div class="form-group">
-        <div class="text-dark">
-            <label for="post_content">Nội dung bài viết</label>
-        </div>
-        <div>
-            <textarea required class="form-control" type="" name="post_content" id="post_content"></textarea>
-        </div>
+<div class="form-group">
+    <div class="text-dark">
+        <label for="post_content">Nội dung bài viết</label>
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Lưu Bài Viết</button>
-        <a name="" id="" class="btn btn-danger" href="/admin/post" role="button">Hủy Bài Viết</a>
+        <textarea required class="form-control" type="" name="description" id="description"></textarea>
     </div>
-</form>
+</div>
+<div>
+    <button type="submit" onclick="addPost()" class="btn btn-primary">Lưu Bài Viết</button>
+    <a name="" id="" class="btn btn-danger" href="/admin/post" role="button">Hủy Bài Viết</a>
+</div>
+
+<div id="result">
+</div>
+
+<script>
+    var BASE_URL = '<%- BASE_URL %>';
+    var POST_UPLOAD_IMAGE_POST = '<%- POST_UPLOAD_IMAGE_POST %>';
+    var token = '<%- token %>';
+    var POST_CREATE_POST = '<%- POST_CREATE_POST %>'
+
+    function openModalUploadImage(id) {
+        $.get("/admin/post/upload/" + id, (data) => {
+            $("#result").html(data);
+
+            $("#uploadImagePost").modal();
+
+            $('#closemodal').click(function () {
+                $('#uploadImagePost').modal("hide");
+                $("#result").html();
+                window.location = "/admin/post";
+
+            });
+        })
+    }
+
+    async function addPost() {
+        var title = document.getElementById("title").value;
+        var summary = document.getElementById("summary").value;
+        var description = document.getElementById("description").value;
+
+        options = {
+            headers:
+                { Authorization: "Bearer " + token }
+        };
+
+        data = {
+            "title": title,
+            "summary": summary,
+            "description": description,
+            "isPost": true
+        }
+
+        if (title == "") {
+            alert("Title is required !!!");
+        } else if (summary == "") {
+            alert("Summary is required !!!");
+        } else if (description == "") {
+            alert("Description is required !!!");
+        } else {
+            axios.post(BASE_URL + POST_CREATE_POST, data, options).then(function (response) {
+                // handle success
+                if (response.data.is_success && title != "" && summary != "" && description != "") {
+                    openModalUploadImage(response.data.data_response._id);
+                }
+            })
+        }
+    }
+
+</script>

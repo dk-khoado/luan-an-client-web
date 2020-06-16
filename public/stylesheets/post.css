@@ -4,3 +4,29 @@
 .image-upload>input {
     display: none;
   }
+#image_post{
+    width: 70%;  
+    align-self: center;
+}
+
+#thumnail{
+    float: left;
+    border-radius: 50px;
+    padding: 5px;
+    width: 50px;
+    height: 50px
+  }
+
+#divUser{
+    margin-left: 20px; 
+    margin-top: 20px;
+}
+
+#nameUser{
+    justify-content: center; 
+    color: black; 
+    margin-top: 8px;
+}
+
+  
+  

@@ -13,6 +13,13 @@ module.exports = {
     POST_API:"/api/v1/getAllAPIByID",
     POST_FORGOT:"/api/account/forgotpassword",
     POST_UPLOAD_IMAGE: "/api/upload/uploadAvatar",
+    POST_UPLOAD_IMAGE_POST: "/api/upload/uploadImagePost",
     URL_IMAGE: "https://api-server-game.herokuapp.com/images/",
-    POST_MANANGER_API: "/api/v1/getAllApiById"
+    POST_MANANGER_API: "/api/v1/getAllApiById",
+    POST_CREATE_POST: "/api/post/creatPost",
+    GET_GET_ALL_POST: "/api/post/getAllPost",
+    POST_DELETE_POST: "/api/post/deletePost",
+    GET_POST_BY_ID: "/api/post/getPostByID",
+    POST_UPDATE_POST: "/api/post/updatePost",
+    POST_SEARCH_POST: "/api/post/findPost?keyword="
 }

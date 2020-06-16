@@ -1,0 +1,104 @@
+<h3>Chỉnh sửa bài hướng dẫn</h3>
+
+<div class="row form-group">
+    <div class="col-4">
+        <div class="image-upload">
+            <label for="file-input-post">
+                <img src="" width="110px" id="image-post" style="cursor: pointer" />
+            </label>
+
+            <input id="file-input-post" type="file" />
+
+            <div class="progress d-none" id="progress-parrent-post">
+                <div class="progress-bar " role="progressbar" id="progress" aria-valuenow="25" aria-valuemin="0"
+                    aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="row form-group">
+            <div class="col-12">
+                <input required placeholder="Nhập tiếu đề..." class="form-control" type="text" name="title" id="title">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-12">
+                <textarea required placeholder="Nhập tóm tắt nội dung..." class="form-control" type="" name="summary"
+                    id="summary"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="form-group">
+    <div class="text-dark">
+        <label for="post_content">Nội dung bài viết</label>
+    </div>
+    <div>
+        <textarea required class="form-control" type="" name="description" id="description"></textarea>
+    </div>
+</div>
+<div>
+    <button type="submit" id="<%- idPost %>" onclick="updatePost(this.id)" class="btn btn-primary">Lưu Bài Viết</button>
+    <a name="" id="" class="btn btn-danger" href="/admin/post" role="button">Hủy Bài Viết</a>
+</div>
+
+<script>
+    var BASE_URL = '<%- BASE_URL %>';
+    var GET_POST_BY_ID = '<%- GET_POST_BY_ID %>';
+    var POST_UPDATE_POST = '<%- POST_UPDATE_POST %>';
+    var POST_UPLOAD_IMAGE_POST = '<%- POST_UPLOAD_IMAGE_POST %>'
+    var POST_ID = '<%- idPost %>';
+    var token = '<%- token %>';
+
+    options = {
+        headers:
+            { Authorization: "Bearer " + token }
+    };
+    axios.post(BASE_URL + GET_POST_BY_ID, { postID: '<%- idPost %>' }, options).then(function (response) {
+        // handle success
+        if (response.data.is_success) {
+            if(response.data.data_response[0].image_post == null){
+                document.getElementById("image-post").src = '/images/default_image.png';
+            }else{
+                document.getElementById("image-post").src = response.data.data_response[0].image_post;
+            }
+            document.getElementById("title").value = response.data.data_response[0].title_post;
+            document.getElementById("summary").value = response.data.data_response[0].summary_post;
+            $("#description").summernote("code", response.data.data_response[0].description_post);
+        } else {
+            alert(response.data.message);
+        }
+    })
+
+    function updatePost(id) {
+        var title = document.getElementById("title").value;
+        var summary = document.getElementById("summary").value;
+        var description = document.getElementById("description").value;
+        options = {
+            headers:
+                { Authorization: "Bearer " + token }
+        };
+
+        data = {
+            "postID": id,
+            "title": title,
+            "summary": summary,
+            "description": description,
+            "isPost": true
+        }
+
+        axios.post(BASE_URL + POST_UPDATE_POST, data, options).then(function (response) {
+            // handle success
+            if (response.data.is_success) {
+                window.location = "/admin/post"
+                alert("Update success");
+            } else {
+                alert(response.data.message);
+            }
+        })
+    }
+
+</script>
