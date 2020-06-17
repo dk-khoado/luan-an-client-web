@@ -17,7 +17,7 @@
 <hr>
 <div id="contentList">
     <% dataPost.forEach(function(data){ %>
-    <div id="<%- data._id %>" class="card text-left">
+    <div id="<%- data._id %>" style="margin-bottom: 20px;" class="card text-left" >
         <div id="divUser">
             <% if (data.user_id.image != null) { %>
             <img src="<%- data.user_id.image %>" id="thumnail" alt="">
@@ -45,7 +45,6 @@
             </a>
         </div>
     </div>
-    <br>
     <% }); %>
 </div>
 

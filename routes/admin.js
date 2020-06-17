@@ -35,6 +35,7 @@ router.get('/post', async (req, res) => {
 
 router.get('/post/new', async (req, res) => {
     res.locals.POST_UPLOAD_IMAGE_POST = apis.POST_UPLOAD_IMAGE_POST;
+    res.locals.POST_UPLOAD_IMAGE_SUMMERNOTE = apis.POST_UPLOAD_IMAGE_SUMMERNOTE;
     res.locals.POST_CREATE_POST = apis.POST_CREATE_POST;
     res.locals.BASE_URL = apis.BASE_URL;
     res.locals.token = req.token;
@@ -44,6 +45,7 @@ router.get('/post/new', async (req, res) => {
 router.get('/post/edit/:id', async (req, res) => {
     res.locals.idPost = req.params.id;
     res.locals.POST_UPLOAD_IMAGE_POST = apis.POST_UPLOAD_IMAGE_POST;
+    res.locals.POST_UPLOAD_IMAGE_SUMMERNOTE = apis.POST_UPLOAD_IMAGE_SUMMERNOTE;
     res.locals.BASE_URL = apis.BASE_URL;
     res.locals.GET_POST_BY_ID = apis.GET_POST_BY_ID;
     res.locals.POST_UPDATE_POST = apis.POST_UPDATE_POST;

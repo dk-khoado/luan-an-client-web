@@ -21,5 +21,6 @@ module.exports = {
     POST_DELETE_POST: "/api/post/deletePost",
     GET_POST_BY_ID: "/api/post/getPostByID",
     POST_UPDATE_POST: "/api/post/updatePost",
-    POST_SEARCH_POST: "/api/post/findPost?keyword="
+    POST_SEARCH_POST: "/api/post/findPost?keyword=",
+    POST_UPLOAD_IMAGE_SUMMERNOTE: "/api/upload/uploadSummernote"
 }
