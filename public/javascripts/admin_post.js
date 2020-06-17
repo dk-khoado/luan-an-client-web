@@ -16,7 +16,7 @@ $(document).ready(function () {
                     };
                     axios.post(BASE_URL + POST_UPLOAD_IMAGE_SUMMERNOTE, formData, options)
                         .then(function (response) {
-                            var image = $('<img>').attr('src', response.data.data_response.secure_url);
+                            var image = $('<img>').attr('src', response.data.data_response.secure_url).attr("height", "30%").attr("width", "30%");
                             $('#description').summernote("insertNode", image[0]);
                         })
                 };
