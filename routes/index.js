@@ -16,7 +16,7 @@ var bundleStyleReset = require('../app_config/styleReset');
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
-  res.render('index', { title: 'Trang Chủ' });
+  res.render('index', { title: 'Trang Chủ', style:require("../app_config/indexcripts"), layout:'layouts/layoutHome2'});
 });
 
 router.get('/login', function (req, res, next) {

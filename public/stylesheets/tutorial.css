@@ -49,16 +49,107 @@ p{
     margin-top: 30px;
 }
 
-#content {
-  width: 100%;
-  position: relative;
-  margin-right: 0;
-}
+
 #container{
   padding-top: 30px;
 }
- span{
-  text-align: justify;
+.post-content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
-
-
+.post-author {
+    display: flex;
+    align-items: center;
+}
+.post-author__name {
+    margin-right: 5px;
+}
+.post-author__info {
+    line-height: 24px;
+}
+.mb-2, .my-2 {
+    margin-bottom: 1.5rem!important;
+}
+.mr-05, .mx-05 {
+    margin-right: .5rem!important;
+}
+.mr-1, .mx-1 {
+    margin-right: 1rem!important;
+}
+.article-content__title {
+    text-align: left;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #1b1b1b;
+    margin-top: 20px;
+    font-size: 2.5rem;
+}
+.md-contents p>img:not(.emoji):only-child {
+    margin: 1.5em auto;
+    display: block;
+}
+.article-content__body {
+    font-size: 18px;
+}
+.avatar {
+    display: block;
+    width: 60px;
+    height: auto;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 100%;
+}
+.stats-item {
+    cursor: default;
+    margin-right: 1rem;
+}
+.el-button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #dcdfe6;
+    color: #606266;
+    font-weight: 500;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.el-button:hover
+{
+    color:#5488c7;
+    border-color:#ccdbee;
+    background-color:#eef3f9;
+}
+.post-meta__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #9b9b9b;
+    font-size: 20px;
+}
+.el-button {
+    outline: none!important;
+}
+.el-button--mini-mini {
+    padding: 5px 15px!important;
+    font-size: 12px!important;
+    border-radius: 3px!important;
+}
+.post-content .post-meta {
+    flex: 1;
+}
+.medium-zoom-image{
+    display: block;
+    width: 800px;
+    height: auto;
+    margin: auto;
+    cursor: pointer;
+}
+@media (max-width: 767.98px){
+    .article-content__title {
+        font-size: 1.75rem;
+    }
+}

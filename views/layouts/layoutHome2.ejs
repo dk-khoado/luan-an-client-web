@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>
+    <% if (typeof(title) !== 'undefined') { %>
+    <%= title %>
+    <% } %>
+  </title>
+  <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
+  <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+   <link rel="stylesheet" href="/assets/css/styles.min.css">
+  <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css" />
+  <link rel="stylesheet" href="/assets/jquery-ui-1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="/assets/jquery-ui-1.12.1/jquery-ui.theme.min.css">
+  <% if (typeof(style) !== 'undefined') { %>
+  <% style.forEach(element => { %>
+  <link rel="stylesheet" href="<%- element %>">
+  <% }) %>
+  <% } %>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/assets/js/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+  <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+  <script src="/assets/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-main">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo.svg" class="img-fluid" alt="ENGINE">
+    </a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav ml-center">
+    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Empresa</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Sistemas</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Planos</a></li>
+    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+  </ul>
+</div>
+</div>
+</nav>
+  <div class="text-dark">
+    <%- body %>
+  </div>
+  <%- script %>
+  <% if (typeof(scripts) !== 'undefined') { %>
+  <% scripts.forEach(element => { %>
+  <script src="<%- element %>"></script>
+  <% }) %>
+  <% } %>
+  <%- script %>
+ 
+</body>
+
+</html>

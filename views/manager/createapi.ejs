@@ -4,7 +4,9 @@
             <form id="create"action="" method="POST" onsubmit="return false">
                 <div class="row">
                     <div class="col-lg-6 text-left">
-                        <input class="api" placeholder="API Name" style="border: none;" name="table_name" id="table_name" required autocomplete="off">
+                        <div class="form__group field">
+                        <input type="input" class="form__field" placeholder="Name" name="table_name" id='table_name' required autocomplete="off" />
+                    </div>
                     </div>
                     <div class="col-lg-6 text-right">
                         <button class="btn btn-success" onclick="createAPI()"  >Create</button>
