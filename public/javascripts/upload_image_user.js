@@ -2,10 +2,8 @@ async function readURL(input) {
     $("#progress-parrent").removeClass("d-none");
     $("#progress").width("0%");
 
-
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-        console.log("aa");
         reader.onload = function (e) {
             $('#image').attr('src', e.target.result);
         }

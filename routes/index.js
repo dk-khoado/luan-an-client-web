@@ -13,19 +13,21 @@ var bundleStyleIndex = require("../app_config/styleIndex");
 var bundleScriptAccount = require('../app_config/scriptAccount');
 var bundleScriptChat = require('../app_config/adminChat');
 
-router.use(function(req, res, next){
-  if (req.signedCookies.token)                                                                                                                                                                                                                                                                                                        {
-    res.locals.is_login = true;
-    res.locals.username = req.session.username;
-  }
-  next();
-})
-/* GET home page. */
+var bundleScriptTutorial = require("../app_config/scriptTutorial");
+
+router.use(function(req, res, next) {
+        if (req.signedCookies.token) {
+            res.locals.is_login = true;
+            res.locals.username = req.session.username;
+        }
+        next();
+    })
+    /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { 
+    res.render('index', {
         title: 'Trang Chủ',
         style: bundleStyleIndex
-     });
+    });
 });
 
 router.get('/login', function(req, res, next) {
@@ -42,7 +44,7 @@ router.get('/register', function(req, res, next) {
     });
 });
 
-router.get('/team' ,function(req, res, next) {
+router.get('/team', function(req, res, next) {
     res.render('home/team', { title: 'My Team' });
 });
 
@@ -68,7 +70,7 @@ router.get('/success', function(req, res, next) {
 
 
 router.post('/register', async function(req, res) {
-    await axios.post('https://api-server-game.herokuapp.com/api/account/register', {
+    await axios.post('http://26.35.61.52:3000/api/account/register', {
             "username": req.body.username,
             "password": req.body.password,
             "email": req.body.email
@@ -86,40 +88,38 @@ router.post('/register', async function(req, res) {
         });
 })
 
-router.post('/login', async function (req, res) {
-  await axios.post('https://api-server-game.herokuapp.com/api/account/login', {
-    "username": req.body.username,
-    "password": req.body.password,
-    "email": req.body.username
-  })
-    .then(function (respone) {
-      if (respone.data.is_success == true) {
-        let data = respone.data;
+router.post('/login', async function(req, res) {
+    await axios.post('http://26.35.61.52:3000/api/account/login', {
+            "username": req.body.username,
+            "password": req.body.password,
+            "email": req.body.username
+        })
+        .then(function(respone) {
+            if (respone.data.is_success == true) {
+                let data = respone.data;
 
-        res.cookie('token', data.data_response.token, { signed: true, maxAge:7* 24 * 60 *60 *1000 });        
-        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 }); 
-        req.session.username = data.data_response.user.username;            
-        res.redirect('/home/newsfeed');
-      }
-      else {
-        res.redirect('/login');
-      }
-    })
-    .catch(function (error) {
-      console.log("[error]", error);
-      res.redirect('/login');
-    });
+                res.cookie('token', data.data_response.token, { signed: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
+                res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 });
+                req.session.username = data.data_response.user.username;
+                res.redirect('/home/newsfeed');
+            } else {
+                res.redirect('/login');
+            }
+        })
+        .catch(function(error) {
+            console.log("[error]", error);
+            res.redirect('/login');
+        });
 });
 
-router.post('/forgotpassword',async (req,res)=>{
-  let respone = await connect(apis.POST_FORGOT,req.body,{});
-  if(respone.is_success == true){
-      
-    res.redirect('/notify_fg');
-  }
-  else{
-    res.redirect('/forgotpassword');
-  }
+router.post('/forgotpassword', async(req, res) => {
+    let respone = await connect(apis.POST_FORGOT, req.body, {});
+    if (respone.is_success == true) {
+
+        res.redirect('/notify_fg');
+    } else {
+        res.redirect('/forgotpassword');
+    }
 })
 
 
@@ -132,31 +132,36 @@ router.get('/notify_fg', async(req, res) => {
     res.render('home/notify_fg', { title: 'Notify', layout: 'layouts/layoutHome' });
 });
 
-router.get('/resetnewpassword',async(req,res)=>{
-  res.render('home/resetnewpassword',{title:"Reset Password", layout:'layouts/layoutHome',style:require("../app_config/styleReset")});
+router.get('/resetnewpassword', async(req, res) => {
+    res.render('home/resetnewpassword', { title: "Reset Password", layout: 'layouts/layoutHome', style: require("../app_config/styleReset") });
 })
 
 
-router.get('/error',function(req,res,next){
-  res.render('error/errorpage',{title:'ErorrPage'});
+router.get('/error', function(req, res, next) {
+    res.render('error/errorpage', { title: 'ErorrPage' });
 });
 
 router.get('/successlogin', function(req, res, next) {
     res.render('success/loginsuccess', { title: 'LoginSuccess' });
 });
 
-router.get('/tutorial',function(req,res,next){
-  res.render('tutorial/index',{style:require('../app_config/styletutorial')})
+router.get('/tutorial', Auth, function(req, res, next) {
+    res.locals.BASE_URL = apis.BASE_URL;
+    res.locals.ALLPOST_TUTORIAL = apis.ALLPOST_TUTORIAL;
+    res.locals.token = req.token;
+    res.locals._id = req.params._id;
+    res.locals.DETAIL_POST = apis.DETAIL_POST;
+    res.render('tutorial/index', {
+        style: require('../app_config/styletutorial'),
+        scripts: bundleScriptTutorial
+    });
 });
 
-router.get('/tutorial/tieudebaihuongdan',function(req,res,next){
-  res.render('tutorial/tutorial',{style:require('../app_config/styletutorial')});
-})
 // ping live server
-router.get('/ping/:urlPing',async function(req, res, next) {
+router.get('/ping/:urlPing', async function(req, res, next) {
 
-  await axios.get("https://api-server-game.herokuapp.com/");
-  res.send("hello !");
+    await axios.get("http://26.35.61.52:3000/");
+    res.send("hello !");
 });
 
 module.exports = router;
