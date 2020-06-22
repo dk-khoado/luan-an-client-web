@@ -16,13 +16,12 @@ var bundleScriptChat = require('../app_config/adminChat');
 router.use(function(req, res, next){
   if (req.signedCookies.token)                                                                                                                                                                                                                                                                                                        {
     res.locals.is_login = true;
-    res.locals.username = req.signedCookies.v1_pf;
+    res.locals.username = req.session.username;
   }
   next();
 })
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
     res.render('index', { 
         title: 'Trang Chủ',
         style: bundleStyleIndex
@@ -98,7 +97,8 @@ router.post('/login', async function (req, res) {
         let data = respone.data;
 
         res.cookie('token', data.data_response.token, { signed: true, maxAge:7* 24 * 60 *60 *1000 });        
-        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 });             
+        res.cookie("v1_pf", data.data_response.user.username, { signed: true, maxAge: 604800 }); 
+        req.session.username = data.data_response.user.username;            
         res.redirect('/home/newsfeed');
       }
       else {
@@ -114,7 +114,7 @@ router.post('/login', async function (req, res) {
 router.post('/forgotpassword',async (req,res)=>{
   let respone = await connect(apis.POST_FORGOT,req.body,{});
   if(respone.is_success == true){
-      console.log(respone.is_success);
+      
     res.redirect('/notify_fg');
   }
   else{

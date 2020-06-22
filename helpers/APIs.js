@@ -22,5 +22,7 @@ module.exports = {
     GET_POST_BY_ID: "/api/post/getPostByID",
     POST_UPDATE_POST: "/api/post/updatePost",
     POST_SEARCH_POST: "/api/post/findPost?keyword=",
-    POST_UPLOAD_IMAGE_SUMMERNOTE: "/api/upload/uploadSummernote"
+    POST_UPLOAD_IMAGE_SUMMERNOTE: "/api/upload/uploadSummernote",
+    POST_DETAIL_API: "/api/v1/getAPIbyID",
+    POST_DELETE_API: "/api/v1/deleteAPI"
 }
