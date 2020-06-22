@@ -1,3 +1,4 @@
+var properties = new Object();
 
 function ItemAPICompoment(name, endpoint) {
     return ` <tr>
@@ -26,7 +27,7 @@ axios.post(BASE_URL + POST_MANANGER_API, data, options)
     .catch(function(error) {
 
         console.log(error);
-        
+
     });
 
 function setValue(name, id) {
@@ -47,6 +48,9 @@ function setValue(name, id) {
 
 
     var endpoint = data.find(v => v._id == id);
+    properties = endpoint.table_fields;
+
+
     $("#getAll").click(() => getValueAll(endpoint.endpoint_action.GET_ALL));
     $("#getbyID").click(() => getValueByID(endpoint.endpoint_action.GET_BY_ID));
     $("#deleteAll").click(() => deleteValueAll(endpoint.endpoint_action.DELETE));
@@ -59,6 +63,8 @@ function getValueAll(endpoint) {
         .then(function(response) {
             var data = response.data;
             console.log("GET VALUE ALL SUCCESS");
+            DataTables(data.data_response);
+            console.log(response.data.data_response[0].master);
             showButtonwithTable();
             var textJson = JSON.stringify(data, undefined, 4);
             $("#getReponse").text(textJson);
@@ -67,12 +73,12 @@ function getValueAll(endpoint) {
 }
 
 function getValueByID(endpoint) {
-        var number = $("#NumberID").val();
-        if (number == null || number == "") {
-            alert("Vui lòng nhập vào");
-            return false;
-        } 
-        endpoint = endpoint.replace(":id", number);
+    var number = $("#NumberID").val();
+    if (number == null || number == "") {
+        alert("Vui lòng nhập vào");
+        return false;
+    }
+    endpoint = endpoint.replace(":id", number);
     axios.post(BASE_URL + endpoint, [], options)
         .then(function(response) {
             console.log("GET VALUE BY ID SUCCESS");
@@ -102,7 +108,7 @@ function deleteValueByID(endpoint) {
     if (number == null || number == "") {
         alert("Vui lòng nhập vào");
         return false;
-    } 
+    }
     axios.post(BASE_URL + endpoint, {
             "id": number,
             "deleteForever": "true"
@@ -121,18 +127,34 @@ function showButtonwithTable() {
 }
 
 
-function removeAPI(table_name)
-{
-    axios.post(BASE_URL + POST_DELETE_API,{
-        table_name: table_name
-    }, options)
-    .then(function(response) {
-        location.reload();
-    });
-    
+function removeAPI(table_name) {
+    axios.post(BASE_URL + POST_DELETE_API, {
+            table_name: table_name
+        }, options)
+        .then(function(response) {
+            location.reload();
+        });
+
 }
-function ComfirmDeleteAPI(table_name){
+
+function ComfirmDeleteAPI(table_name) {
     $("#ConfirmDelete").unbind("click");
     $("#ConfirmDelete").click(() => removeAPI(table_name));
-  
+
+}
+
+function DataTables(data) {
+    var column = [];
+    $("#theadtables").html("");
+    for (let index = 0; index < properties.length; index++) {
+        const element = properties[index];
+        $("#theadtables").append("<th" + "style='width:200px'" + ">" + element.name + "</th>");
+        var temp = { data: "master." + element.name }
+        column.push(temp);
+    }
+
+    $('#datatables').DataTable({
+        data: data,
+        columns: column
+    });
 }

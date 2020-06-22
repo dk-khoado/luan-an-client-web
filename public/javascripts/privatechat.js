@@ -4,6 +4,8 @@ data.push({content : "Hello","mySeft" : true})
 data.push({content : "Hi","mySeft" : false})
 data.push({content : "Oke","mySeft" : true})
 data.push({content : "Oke lần 2","mySeft" : false})
+data.push({content : "Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things."
+,"mySeft" : false})
 
 function renderItem(content, time, image, mySeft) {
 
@@ -46,15 +48,13 @@ function sendChat()
     return false;
 
 }
-$(document).ready( () =>{
-    var peer = new Peer(name,{
-        host: 'server-real-time.herokuapp.com',
-        path:  '/p2p',
-        port:80
-    })
 
-    peer.on('open', function(id)
-    {
-        console.log('My ID', id);
-    })
-})
+$(document).ready(function() {
+    $(".listchat").click(function () {
+        $(".listchat").toggleClass("active_chat");
+      });
+    
+});
+
+
+  

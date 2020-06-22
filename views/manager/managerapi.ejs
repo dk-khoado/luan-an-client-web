@@ -23,7 +23,7 @@
 
             </div>
         </div>
-        <div class="col-lg-5 px-0" style="border: 1px solid rgb(143, 148, 153);height: 400px;">
+        <div class="col-lg-5 px-0" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);height: 430px;">
             <div class="row-header px-0">
                 <div class="row-text">
                     <div class="col-12 text-left">
@@ -33,24 +33,24 @@
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-success w-75" id="getAll" disabled><span>get all</span> </button>
+                    <button class="btn btn-success w-75" id="getAll" disabled><span>Get All</span> </button>
                 </div>
                 <div class="col-4">
-                    <input type="number" class="form-control" placeholder="Enter id" aria-label="Enter id" id="NumberID">
+                    <input type="number" class="form-control" placeholder="Enter ID" aria-label="Enter ID" id="NumberID">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-success w-75" id="getbyID" disabled><span>get by id</span></button>
+                    <button class="btn btn-success w-75" id="getbyID" disabled><span>Get By ID</span></button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-4 text-right">
-                    <button class="btn btn-danger w-75" id="deleteAll" disabled><span>delete all</span> </button>
+                    <button class="btn btn-danger w-75" id="deleteAll" disabled><span>Delete All</span> </button>
                 </div>
                 <div class="col-4">
-                    <input type="number" class="form-control" placeholder="Enter id" aria-label="Enter id" id="RemoveID" min="0">
+                    <input type="number" class="form-control" placeholder="Enter ID" aria-label="Enter ID" id="RemoveID" min="0">
                 </div>
                 <div class="col-4 text-left">
-                    <button class="btn btn-danger w-75 px-0" id="deletebyID" type="submit" disabled><span>delete by id</span></button>
+                    <button class="btn btn-danger w-75 px-0" id="deletebyID" type="submit" disabled><span>Delete By ID</span></button>
                 </div>
             </div>
             <div class="row custom-mt-50">
@@ -61,52 +61,6 @@
                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#basicExampleModal" style="border: 2px solid #3D80CC;background-color: #EDEDED;color: #3D80CC;display: none;" id="title">Open with table</button>
                     <!-- Button trigger modal -->
                     <!-- Modal -->
-                    <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Model</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Tittle</th>
-                                                <th>Director</th>
-                                                <th>Year</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>The Wizard of Oz</td>
-                                                <td>Victor Fleming</td>
-                                                <td>
-                                                    1939
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>The Third Man</td>
-                                                <td>Carol Reed</td>
-                                                <td>
-                                                    1949
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Citizen Kane</td>
-                                                <td>Orson Welles</td>
-                                                <td>
-                                                    1941
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -131,13 +85,15 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10">
                     <div class="box-content">
-                        <pre id="getReponse" style="height:170px"></pre>
+                        <pre id="getReponse" style="height:200px"></pre>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- MODAL TALBE -->
+<%- include('componentsTable/_modalGetAll', {}); %>
 <script>
     var BASE_URL = '<%- BASE_URL %>';
     var POST_MANANGER_API = '<%- POST_MANANGER_API %>';
